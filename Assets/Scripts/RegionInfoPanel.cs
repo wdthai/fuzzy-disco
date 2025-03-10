@@ -22,7 +22,7 @@ public class RegionInfoPanel : MonoBehaviour
         Instance = this;
         gameObject.SetActive(false); 
 
-        closeButton.onClick.AddListener(HidePanel);
+        closeButton.onClick.AddListener(ClosePanel);
     }
 
     public void ShowRegionInfo(RegionData region)
@@ -37,7 +37,7 @@ public class RegionInfoPanel : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void HidePanel()
+    public void ClosePanel()
     {
         gameObject.SetActive(false);
     }
