@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 5 0.1, 0.8
-// 5.5 0.1 0.3
-// 
-//
-//
-// 2 5.7 3.8
-
 public class MapController : MonoBehaviour
 {
     public float zoomSpeed = 5f, minZoom = 2f, maxZoom = 5f;
@@ -30,8 +23,8 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandlePan();
-        HandleZoom();
+        //HandlePan();
+        //HandleZoom();
     }
 
     void HandleZoom()

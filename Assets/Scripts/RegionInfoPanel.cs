@@ -28,11 +28,11 @@ public class RegionInfoPanel : MonoBehaviour
     public void ShowRegionInfo(RegionData region)
     {
         nameText.text = region.regionName;
-        wealthText.text = "Wealth: " + region.wealthTier;
-        educationText.text = "Education: " + region.education + "%";
-        stabilityText.text = "Stability: " + region.stability + "%";
-        complianceText.text = "Compliance: " + region.compliance + "%";
-        sustainabilityText.text = "Sustainability: " + region.sustainability + "%";
+        wealthText.text = $"Wealth: {region.wealthTier}"  ;
+        educationText.text = $"Education: {region.education}%";
+        stabilityText.text = $"Stability: {region.stability}%";
+        complianceText.text = $"Compliance: {region.compliance}%";
+        sustainabilityText.text = $"Sustainability: {region.sustainability}%";
 
         gameObject.SetActive(true);
     }

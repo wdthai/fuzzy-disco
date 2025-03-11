@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22b1b204d3dca2741b94b1f1e25af4b9, type: 3}
-  m_Name: America
+  m_Name: N America
   m_EditorClassIdentifier: 
-  regionName: America
-  wealthTier: 5
-  education: 2
-  stability: 3
-  compliance: 1
-  sustainability: 1
+  regionName: N America
+  wealthTier: 4
+  education: 50
+  stability: 50
+  compliance: 40
+  sustainability: 25

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Asia
   m_EditorClassIdentifier: 
   regionName: Asia
-  wealthTier: 3
-  education: 4
-  stability: 3
-  compliance: 3
-  sustainability: 3
+  wealthTier: 2
+  education: 45
+  stability: 60
+  compliance: 50
+  sustainability: 50
