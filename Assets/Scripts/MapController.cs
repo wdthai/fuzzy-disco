@@ -23,8 +23,11 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //HandlePan();
-        //HandleZoom();
+        if (GameManager.Instance.isTabOpen)
+            return;
+
+        HandlePan();
+        HandleZoom();
     }
 
     void HandleZoom()
@@ -39,12 +42,12 @@ public class MapController : MonoBehaviour
 
     void HandlePan()
     {
-        if (Input.GetMouseButtonDown(1)) // Left-click to start dragging
+        if (Input.GetMouseButtonDown(1))
         {
             dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if (Input.GetMouseButton(1)) // While holding left-click
+        if (Input.GetMouseButton(1))
         {
             Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 newPosition = transform.position + difference;

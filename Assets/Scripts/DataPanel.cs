@@ -13,17 +13,25 @@ public class DataPanel : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("DataPanel Awake");
         Instance = this;
         gameObject.SetActive(false);
     }
 
-    void Start()
+    public void Refresh()
     {
+        if (!gameObject.activeSelf) return;
+
+        foreach (Transform child in dataContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
         Region[] regions = FindObjectsOfType<Region>();
 
         foreach (Region region in regions)
         {
-            Debug.Log("Region: " + region.data.regionName);
+            // Debug.Log("Region: " + region.data.regionName);
             // Instantiate UI prefab inside the dataContainer
             GameObject regionUI = Instantiate(regionDataPrefab, dataContainer);
             
@@ -38,5 +46,15 @@ public class DataPanel : MonoBehaviour
             textFields[4].text = $"Compliance: {region.data.compliance}%";
             textFields[5].text = $"Sustainability: {region.data.sustainability}%";
         }
+    }
+
+    public void ClosePanel()
+    {
+        gameObject.SetActive(false);
+    }
+    public void OpenPanel()
+    {
+        Refresh();
+        gameObject.SetActive(true);
     }
 }

@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 
     public int money = 0;
     public int research = 0;
-
     [Range(0, 100)] public float globalHealth = 100;
+
+    public bool isTabOpen = false;
 
     private void Awake()
     {
@@ -18,16 +19,27 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject); // ensure one instance only (singleton)
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        
-    }
+        StartCoroutine(AutoRefreshPanels());
+    }   
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator AutoRefreshPanels()
     {
-        GameInfoPanel.Instance.ShowGameInfo(Instance);
+        yield return new WaitUntil(() => 
+            DataPanel.Instance != null 
+            && SkillsPanel.Instance != null);
+        
+        while (true)
+        {
+            GameInfoPanel.Instance.Refresh(Instance);
+
+            // if (DataPanel.Instance)
+            DataPanel.Instance.Refresh();
+            SkillsPanel.Instance.Refresh();
+
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

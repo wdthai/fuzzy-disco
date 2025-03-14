@@ -23,7 +23,7 @@ public class GameInfoPanel : MonoBehaviour
         skillButton.onClick.AddListener(() => DataSkillsPanel.Instance.OpenPanel("skills"));
     }
 
-    public void ShowGameInfo(GameManager game)
+    public void Refresh(GameManager game)
     {
         moneyText.text = $"Money: {game.money}" ;
         researchText.text = $"Research: {game.research}" ;

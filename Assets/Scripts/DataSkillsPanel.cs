@@ -7,15 +7,12 @@ public class DataSkillsPanel : MonoBehaviour
 {
 
     public static DataSkillsPanel Instance;
-    // public DataPanel dataPanel;
-    public GameObject skillsPanel;
     // Start is called before the first frame update
     public Button closeButton;
     void Awake()
     {
         Instance = this;
         gameObject.SetActive(false);
-        // skillsPanel.SetActive(false);
         closeButton.gameObject.SetActive(false);
         closeButton.onClick.AddListener(ClosePanel);
     }
@@ -24,30 +21,30 @@ public class DataSkillsPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         closeButton.gameObject.SetActive(true);
-        // GameInfoPanel.Instance.gameObject.SetActive(false);
-        RegionInfoPanel.Instance.gameObject.SetActive(false);
+        RegionInfoPanel.Instance.ClosePanel();
+        GameManager.Instance.isTabOpen = true;
 
         if (panel == "data")
         {
             // Open data panel
-            DataPanel.Instance.gameObject.SetActive(true);
-            skillsPanel.SetActive(false);
+            DataPanel.Instance.OpenPanel();
+            SkillsPanel.Instance.ClosePanel();
             Debug.Log("Data Panel Opened");
         }
         else if (panel == "skills")
         {
             // Open skill panel
-            DataPanel.Instance.gameObject.SetActive(false);
-            skillsPanel.SetActive(true);
+            DataPanel.Instance.ClosePanel();
+            SkillsPanel.Instance.OpenPanel();
             Debug.Log("Skills Panel Opened");
         }
     }
 
     public void ClosePanel()
     {
-        DataPanel.Instance.gameObject.SetActive(false);
-        skillsPanel.SetActive(false);
+        DataPanel.Instance.ClosePanel();
+        SkillsPanel.Instance.ClosePanel();
         gameObject.SetActive(false);
-        // GameInfoPanel.Instance.gameObject.SetActive(true);
+        GameManager.Instance.isTabOpen = false;
     }
 }
