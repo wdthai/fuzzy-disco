@@ -12,7 +12,6 @@ public class SkillsPanel : MonoBehaviour
     public GameObject skillsDataPrefab;  // Assign the prefab in the Inspector
     public Transform dataContainer;      // Parent object for instantiated UI elements
 
-    public static List<Skill> skills;
     void Awake()
     {
         Debug.Log("SkillPanel Awake");
@@ -29,11 +28,11 @@ public class SkillsPanel : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        skills = SkillManager.Instance.allSkills;
-
-        foreach (Skill skill in SkillManager.Instance.allSkills)
+        foreach (SkillData skill in SkillManager.Instance.allSkills)
         {
-            // Debug.Log("Skill: " + skill.skillName);
+            skill.moneyCost = (int)(skill.baseMoneyCost * SkillManager.Instance.moneyCostReduction);
+            skill.researchCost = (int)(skill.baseResearchCost * SkillManager.Instance.researchCostReduction);
+            Debug.Log("Skill: " + skill.skillName + skill.moneyCost + skill.researchCost);
             // Instantiate UI prefab inside the dataContainer
             GameObject skillUI = Instantiate(skillsDataPrefab, dataContainer);
             
@@ -46,7 +45,8 @@ public class SkillsPanel : MonoBehaviour
             // Set data
             textFields[0].text = $"{skill.skillName}";
             textFields[1].text = $"Desc: {skill.description}";
-            textFields[2].text = $"Cost: {skill.cost}";
+            textFields[2].text = $"Money: {skill.moneyCost}";
+            textFields[3].text = $"Research: {skill.researchCost}";
         }
     }
 

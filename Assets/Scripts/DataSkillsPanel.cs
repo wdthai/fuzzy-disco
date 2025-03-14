@@ -12,7 +12,7 @@ public class DataSkillsPanel : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
         closeButton.gameObject.SetActive(false);
         closeButton.onClick.AddListener(ClosePanel);
     }

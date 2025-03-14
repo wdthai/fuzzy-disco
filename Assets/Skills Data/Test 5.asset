@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 5
   description: 5
-  cost: 5
+  baseResearchCost: 10
+  baseMoneyCost: 100
+  researchCost: 0
+  moneyCost: 0
   prerequisites: []
   isUnlocked: 0

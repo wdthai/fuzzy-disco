@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Test 1
   description: test
-  cost: 1
+  baseResearchCost: 10
+  baseMoneyCost: 10
+  researchCost: 0
+  moneyCost: 0
   prerequisites: []
-  isUnlocked: 0
+  isUnlocked: 1
