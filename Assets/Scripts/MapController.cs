@@ -9,22 +9,15 @@ public class MapController : MonoBehaviour
     public Vector2 minPanLimit = new Vector2(0.15f, 0.8f);
     public Vector2 maxPanLimit = new Vector2(5.4f, 3.8f);
     public float newSize;
-
-
     public Camera cam;
     public Vector3 dragOrigin;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.isTabOpen)
             return;
+        
 
         HandlePan();
         HandleZoom();

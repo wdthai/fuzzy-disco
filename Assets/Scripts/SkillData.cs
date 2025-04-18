@@ -9,9 +9,9 @@ public class SkillData : ScriptableObject
     public string description;
     public int baseResearchCost; // research points
     public int baseMoneyCost; // money
-    public int researchCost; // research points
-    public int moneyCost; // money
-    // public SkillData[] prerequisites; 
+    public int finalResearchCost; // research points
+    public int finalMoneyCost; // money
+    public SkillData[] prerequisites; 
     public bool isUnlocked = false; 
     public float moneyGenerationRate = 1f;
     public float researchGenerationRate = 1f; 

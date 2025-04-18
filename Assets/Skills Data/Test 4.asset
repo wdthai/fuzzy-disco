@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Test 4
   m_EditorClassIdentifier: 
   skillName: 4
-  description: 4
+  description: money discount
   baseResearchCost: 100
   baseMoneyCost: 100
-  researchCost: 0
-  moneyCost: 0
-  prerequisites: []
-  isUnlocked: 1
+  researchCost: 100
+  moneyCost: 100
+  isUnlocked: 0
+  moneyGenerationRate: 1
+  researchGenerationRate: 1
+  moneyCostReduction: 0.5
+  researchCostReduction: 1
+  policyCostReduction: 1

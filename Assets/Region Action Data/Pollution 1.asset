@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7cfe552baf8cac49a383e414fa0c294, type: 3}
-  m_Name: Test 1
+  m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
+  m_Name: Pollution 1
   m_EditorClassIdentifier: 
-  skillName: Test 1
-  description: moeny increase
+  actionName: Air Pollution
+  description: increase air quality (local health)
+  economyChange: 0
+  educationChange: 0
+  stabilityChange: 0
+  complianceChange: 0
+  healthChange: 50
   baseResearchCost: 10
   baseMoneyCost: 10
   finalResearchCost: 10
   finalMoneyCost: 10
-  isUnlocked: 1
-  moneyGenerationRate: 5
-  researchGenerationRate: 1
-  moneyCostReduction: 1
-  researchCostReduction: 1
-  policyCostReduction: 1
+  isUnlocked: 0

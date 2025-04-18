@@ -7,20 +7,17 @@ using UnityEngine.UI;
 public class GameInfoPanel : MonoBehaviour
 {
     public static GameInfoPanel Instance;
-    public TextMeshProUGUI moneyText;
-    public TextMeshProUGUI researchText;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI moneyText, researchText, healthText;
 
-    public Button dataButton;
-    public Button skillButton;
+    public Button dataButton, skillButton;
 
     // Start is called before the first frame update
 
     private void Awake()
     {
         Instance = this;
-        dataButton.onClick.AddListener(() => DataSkillsPanel.Instance.OpenPanel("data"));
-        skillButton.onClick.AddListener(() => DataSkillsPanel.Instance.OpenPanel("skills"));
+        dataButton.onClick.AddListener(() => DataPanel.Instance.OpenPanel());
+        skillButton.onClick.AddListener(() => SkillsPanel.Instance.OpenPanel());
     }
 
     public void Refresh(GameManager game)
@@ -29,6 +26,4 @@ public class GameInfoPanel : MonoBehaviour
         researchText.text = $"Research: {game.research}" ;
         healthText.text = $"Health: {game.globalHealth}%";
     }
-
-   
 }

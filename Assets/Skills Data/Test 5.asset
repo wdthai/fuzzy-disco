@@ -16,7 +16,11 @@ MonoBehaviour:
   description: 5
   baseResearchCost: 10
   baseMoneyCost: 100
-  researchCost: 0
-  moneyCost: 0
-  prerequisites: []
+  finalResearchCost: 10
+  finalMoneyCost: 100
   isUnlocked: 0
+  moneyGenerationRate: 1
+  researchGenerationRate: 1
+  moneyCostReduction: 1
+  researchCostReduction: 1
+  policyCostReduction: 1

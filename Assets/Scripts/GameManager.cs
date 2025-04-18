@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     public float baseMoneyRate = 10f;
     public float baseResearchRate = 1f;
 
-
-
     public bool isTabOpen = false;
 
     private void Awake()
@@ -26,7 +24,6 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        DataSkillsPanel.Instance.ClosePanel();
         StartCoroutine(Tick());
     }   
 

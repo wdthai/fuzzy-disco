@@ -5,6 +5,7 @@ using UnityEngine;
 public class Region : MonoBehaviour
 {
     public RegionData data;
+    public List<ActionData> actions;
     // public Coroutine refreshCoroutine;
 
     private void OnMouseDown()

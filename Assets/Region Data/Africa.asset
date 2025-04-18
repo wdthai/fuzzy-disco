@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Africa
   m_EditorClassIdentifier: 
   regionName: Africa
-  wealthTier: 1
-  education: 20
-  stability: 20
-  compliance: 70
-  sustainability: 18.5
+  actions:
+  - {fileID: 11400000, guid: 30a63f6024767a94ba7ae39436cb7a7d, type: 2}
+  - {fileID: 11400000, guid: 30a63f6024767a94ba7ae39436cb7a7d, type: 2}
+  - {fileID: 11400000, guid: 30a63f6024767a94ba7ae39436cb7a7d, type: 2}
+  localEconomy: 0
+  localEducation: 0
+  localStability: 0
+  localCompliance: 0
+  localChallenge: 
+  localHealth: 0

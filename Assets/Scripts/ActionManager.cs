@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class ActionManager : MonoBehaviour
 {
 
-    public static SkillManager Instance;
+    public static ActionManager Instance;
 
-    public List<SkillData> allSkills; // Assign in Inspector
+    public List<ActionData> actions; // Assign in Inspector
 
     public float moneyGenerationRate = 1f; // baseRate * generationRate 
     public float researchGenerationRate = 1f;
@@ -21,31 +21,31 @@ public class SkillManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-    public bool isUnlockable(SkillData skill)
+    public bool isExecutable(ActionData action)
     {
-        if (skill.isUnlocked) return false;
-        if (GameManager.Instance.research < (int)(skill.baseResearchCost * researchCostReduction)) return false;
-        if (GameManager.Instance.money < (int)(skill.baseMoneyCost * moneyCostReduction)) return false;
+        if (action.isUnlocked) return false;
+        if (GameManager.Instance.research < (int)(action.baseResearchCost * researchCostReduction)) return false;
+        if (GameManager.Instance.money < (int)(action.baseMoneyCost * moneyCostReduction)) return false;
 
         // Check prerequisites
-        foreach (SkillData pre in skill.prerequisites)
-        {
-            if (!pre.isUnlocked) return false;
-        }
+        // foreach (Skill pre in skill.prerequisites)
+        // {
+        //     if (!pre.isUnlocked) return false;
+        // }
 
         return true;
     }
 
-    public void UnlockSkill(SkillData skill)
+    public void ExecuteAction(ActionData action)
     {
-        if (!isUnlockable(skill)) return;
+        // if (!isUnlockable(skill)) return;
 
-        GameManager.Instance.research -= (int)(skill.finalResearchCost * researchCostReduction);
-        GameManager.Instance.money -= (int)(skill.finalMoneyCost * moneyCostReduction);
-        skill.isUnlocked = true;
+        GameManager.Instance.research -= (int)(action.finalResearchCost * researchCostReduction);
+        GameManager.Instance.money -= (int)(action.finalMoneyCost * moneyCostReduction);
+        action.isUnlocked = true;
         
         // Debug.Log($"Unlocked Skill: {skill.skillName}");
-        applySkill(skill);
+        // applySkill(skill);
 
         SkillsPanel.Instance.Refresh();
         GameInfoPanel.Instance.Refresh(GameManager.Instance);

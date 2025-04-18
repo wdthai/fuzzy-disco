@@ -11,12 +11,15 @@ public class SkillsPanel : MonoBehaviour
     // Start is called before the first frame update
     public GameObject skillsDataPrefab;  // Assign the prefab in the Inspector
     public Transform dataContainer;      // Parent object for instantiated UI elements
+    public Button closeButton;
 
     void Awake()
     {
         Debug.Log("SkillPanel Awake");
         Instance = this;
         gameObject.SetActive(false);
+        closeButton.gameObject.SetActive(false);
+        closeButton.onClick.AddListener(ClosePanel);
     }
 
     public void Refresh()
@@ -30,34 +33,54 @@ public class SkillsPanel : MonoBehaviour
 
         foreach (SkillData skill in SkillManager.Instance.allSkills)
         {
-            skill.moneyCost = (int)(skill.baseMoneyCost * SkillManager.Instance.moneyCostReduction);
-            skill.researchCost = (int)(skill.baseResearchCost * SkillManager.Instance.researchCostReduction);
-            Debug.Log("Skill: " + skill.skillName + skill.moneyCost + skill.researchCost);
             // Instantiate UI prefab inside the dataContainer
             GameObject skillUI = Instantiate(skillsDataPrefab, dataContainer);
-            
-            // Get references to the TMP fields inside the prefab
             TextMeshProUGUI[] textFields = skillUI.GetComponentsInChildren<TextMeshProUGUI>();
-            
             Button button = skillUI.GetComponentInChildren<Button>();
+
+            if (skill.isUnlocked) 
+            {
+                textFields[0].text = $"{skill.skillName}";
+                textFields[1].text = $"Desc: {skill.description}";
+                textFields[2].text = $"";
+                textFields[3].text = $"";
+                button.interactable = false;
+                TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
+                buttonText.text = "Acquired";
+                continue;
+            } // Skip if already unlocked
+
+
+            skill.finalMoneyCost = (int)(skill.baseMoneyCost * SkillManager.Instance.moneyCostReduction);
+            skill.finalResearchCost = (int)(skill.baseResearchCost * SkillManager.Instance.researchCostReduction);
+            // Debug.Log("Skill: " + skill.skillName + skill.finalMoneyCost + skill.finalResearchCost);
+
+            // Get references to the TMP fields inside the prefab
             button.interactable = SkillManager.Instance.isUnlockable(skill);
             button.onClick.AddListener(() => SkillManager.Instance.UnlockSkill(skill));
             // Set data
             textFields[0].text = $"{skill.skillName}";
             textFields[1].text = $"Desc: {skill.description}";
-            textFields[2].text = $"Money: {skill.moneyCost}";
-            textFields[3].text = $"Research: {skill.researchCost}";
+            textFields[2].text = $"Money: {skill.finalMoneyCost}";
+            textFields[3].text = $"Research: {skill.finalResearchCost}";
         }
     }
 
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+        closeButton.gameObject.SetActive(false);
+        GameManager.Instance.isTabOpen = false;
     }
     public void OpenPanel()
     {
+
         Refresh();
         gameObject.SetActive(true);
+        closeButton.gameObject.SetActive(true);
+        DataPanel.Instance.ClosePanel();
+        Debug.Log("Skills Panel Opened");
+        GameManager.Instance.isTabOpen = true;
     }
 }
 

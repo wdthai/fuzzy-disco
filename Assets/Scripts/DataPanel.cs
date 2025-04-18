@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DataPanel : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class DataPanel : MonoBehaviour
     // Start is called before the first frame update
     public GameObject regionDataPrefab;  // Assign the prefab in the Inspector
     public Transform dataContainer;      // Parent object for instantiated UI elements
+    public Button closeButton;
 
     void Awake()
     {
         Debug.Log("DataPanel Awake");
         Instance = this;
         gameObject.SetActive(false);
+        closeButton.gameObject.SetActive(false);
+        closeButton.onClick.AddListener(ClosePanel);
     }
 
     public void Refresh()
@@ -40,21 +44,27 @@ public class DataPanel : MonoBehaviour
 
             // Set data
             textFields[0].text = $"{region.data.regionName}";
-            textFields[1].text = $"Wealth: {region.data.wealthTier}";
-            textFields[2].text = $"Education: {region.data.education}%";
-            textFields[3].text = $"Stability: {region.data.stability}%";
-            textFields[4].text = $"Compliance: {region.data.compliance}%";
-            textFields[5].text = $"Sustainability: {region.data.sustainability}%";
+            textFields[1].text = $"Wealth: {region.data.localEconomy}";
+            textFields[2].text = $"Education: {region.data.localEducation}%";
+            textFields[3].text = $"Stability: {region.data.localStability}%";
+            textFields[4].text = $"Compliance: {region.data.localCompliance}%";
+            textFields[5].text = $"Health: {region.data.localHealth}%";
         }
     }
 
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+        closeButton.gameObject.SetActive(false);
+        GameManager.Instance.isTabOpen = false;
     }
     public void OpenPanel()
     {
         Refresh();
         gameObject.SetActive(true);
+        closeButton.gameObject.SetActive(true);
+        SkillsPanel.Instance.ClosePanel();
+        Debug.Log("Data Panel Opened");
+        GameManager.Instance.isTabOpen = true;
     }
 }
