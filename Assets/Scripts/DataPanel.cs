@@ -44,11 +44,11 @@ public class DataPanel : MonoBehaviour
 
             // Set data
             textFields[0].text = $"{region.data.regionName}";
-            textFields[1].text = $"Wealth: {region.data.localEconomy}";
-            textFields[2].text = $"Education: {region.data.localEducation}%";
-            textFields[3].text = $"Stability: {region.data.localStability}%";
-            textFields[4].text = $"Compliance: {region.data.localCompliance}%";
-            textFields[5].text = $"Health: {region.data.localHealth}%";
+            textFields[1].text = $"Wealth: {region.data.economy}";
+            textFields[2].text = $"Education: {region.data.education}%";
+            textFields[3].text = $"Stability: {region.data.stability}%";
+            textFields[4].text = $"Compliance: {region.data.compliance}%";
+            textFields[5].text = $"Health: {region.data.health}%";
         }
     }
 

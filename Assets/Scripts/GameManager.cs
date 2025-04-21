@@ -9,8 +9,14 @@ public class GameManager : MonoBehaviour
     public int money = 0;
     public int research = 0;
     [Range(0, 100)] public float globalHealth = 100;
-    public float baseMoneyRate = 10f;
-    public float baseResearchRate = 1f;
+
+    const float baseMoneyRate = 1f;
+    const float baseResearchRate = 1f;
+    public float moneyGenerationMultiplier = 1f; // baseRate * multiplier
+    public float researchGenerationMultiplier = 1f;
+    public float moneyCostMultiplier = 1f; // baseCost * reduction
+    public float researchCostMultiplier = 1f;
+    public float policyCostMultiplier = 1f;
 
     public bool isTabOpen = false;
 
@@ -46,8 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void OnTick()
     {
-        money += (int)(baseMoneyRate * SkillManager.Instance.moneyGenerationRate);
-        research += (int)(baseResearchRate * SkillManager.Instance.researchGenerationRate);
+        money += (int)(baseMoneyRate * moneyGenerationMultiplier);
+        research += (int)(baseResearchRate * researchGenerationMultiplier);
         globalHealth -= 0.1f;
 
     }

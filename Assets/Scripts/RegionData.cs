@@ -6,11 +6,16 @@ using UnityEngine;
 public class RegionData : ScriptableObject
 {
     public string regionName;
+    public string challengeName; // unique regional problem
     public List<ActionData> actions;
-    [Range(0, 100)] public int localEconomy; // affects max money generation
-    [Range(0, 100)] public int localEducation; // affects max research generation
-    [Range(0, 100)] public int localStability; // affects range of money/research generation
-    [Range(0, 100)] public int localCompliance; // affects effectiveness of policies
-    public string localChallenge; // unique regional challenge
-    [Range(0, 100)] public float localHealth; // affects global health
+    [Range(0, 100)] public int economy; // local region statistic
+    [Range(0, 100)] public int education; 
+    [Range(0, 100)] public int stability; 
+    [Range(0, 100)] public int compliance; 
+    [Range(0, 100)] public float health; 
+    [Range(-100, 100)] public int economyChangeRate; // affects local money generation
+    [Range(-100, 100)] public int educationChangeRate; // affects max research generation
+    [Range(-100, 100)] public int stabilityChangeRate; // affects range of money/research generation
+    [Range(-100, 100)] public int complianceChangeRate; // affects effectiveness of policies
+    [Range(-100, 100)] public float healthChangeRate; // affects global health
 }

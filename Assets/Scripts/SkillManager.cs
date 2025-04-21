@@ -9,13 +9,6 @@ public class SkillManager : MonoBehaviour
 
     public List<SkillData> allSkills; // Assign in Inspector
 
-    public float moneyGenerationRate = 1f; // baseRate * generationRate 
-    public float researchGenerationRate = 1f;
-    public float moneyCostReduction = 1f; // baseCost * reduction
-    public float researchCostReduction = 1f;
-    public float policyCostReduction = 1f;
-
-
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -24,8 +17,8 @@ public class SkillManager : MonoBehaviour
     public bool isUnlockable(SkillData skill)
     {
         if (skill.isUnlocked) return false;
-        if (GameManager.Instance.research < (int)(skill.baseResearchCost * researchCostReduction)) return false;
-        if (GameManager.Instance.money < (int)(skill.baseMoneyCost * moneyCostReduction)) return false;
+        if (GameManager.Instance.research < (int)(skill.baseResearchCost * GameManager.Instance.researchCostMultiplier)) return false;
+        if (GameManager.Instance.money < (int)(skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
 
         // Check prerequisites
         foreach (SkillData pre in skill.prerequisites)
@@ -40,8 +33,8 @@ public class SkillManager : MonoBehaviour
     {
         if (!isUnlockable(skill)) return;
 
-        GameManager.Instance.research -= (int)(skill.finalResearchCost * researchCostReduction);
-        GameManager.Instance.money -= (int)(skill.finalMoneyCost * moneyCostReduction);
+        GameManager.Instance.research -= (int)(skill.finalResearchCost * GameManager.Instance.researchCostMultiplier);
+        GameManager.Instance.money -= (int)(skill.finalMoneyCost * GameManager.Instance.moneyCostMultiplier);
         skill.isUnlocked = true;
         
         // Debug.Log($"Unlocked Skill: {skill.skillName}");
@@ -53,10 +46,10 @@ public class SkillManager : MonoBehaviour
 
     public void applySkill(SkillData skill)
     {
-        moneyGenerationRate *= skill.moneyGenerationRate;
-        researchGenerationRate *= skill.researchGenerationRate;
-        moneyCostReduction *= skill.moneyCostReduction;
-        researchCostReduction *= skill.researchCostReduction;
-        policyCostReduction *= skill.policyCostReduction;
+        GameManager.Instance.moneyGenerationMultiplier *= skill.moneyGenerationModifier;
+        GameManager.Instance.researchGenerationMultiplier *= skill.researchGenerationModifier;
+        GameManager.Instance.moneyCostMultiplier *= skill.moneyCostModifier;
+        GameManager.Instance.researchCostMultiplier *= skill.researchCostModifier;
+        GameManager.Instance.policyCostMultiplier *= skill.policyCostModifier;
     }
 }

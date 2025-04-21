@@ -8,12 +8,13 @@ public class ActionData : ScriptableObject
     public string actionName;
     public string description;
     // public List<RegionData> targetRegions;
+    public ActionData[] prerequisites; 
 
-    [Range(0, 100)] public int economyChange; // affects max money generation
-    [Range(0, 100)] public int educationChange; // affects max research generation
-    [Range(0, 100)] public int stabilityChange; // affects range of money/research generation
-    [Range(0, 100)] public int complianceChange; // affects effectiveness of policies
-    [Range(0, 100)] public float healthChange; // affects global health
+    [Range(0, 100)] public int economyChange; // affects local economy change rate
+    [Range(0, 100)] public int educationChange; // affects local change rate
+    [Range(0, 100)] public int stabilityChange;
+    [Range(0, 100)] public int complianceChange;
+    [Range(0, 100)] public float healthChange;
 
     public int baseResearchCost; // research points
     public int baseMoneyCost; // money

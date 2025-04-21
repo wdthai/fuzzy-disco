@@ -51,8 +51,8 @@ public class SkillsPanel : MonoBehaviour
             } // Skip if already unlocked
 
 
-            skill.finalMoneyCost = (int)(skill.baseMoneyCost * SkillManager.Instance.moneyCostReduction);
-            skill.finalResearchCost = (int)(skill.baseResearchCost * SkillManager.Instance.researchCostReduction);
+            skill.finalMoneyCost = (int)(skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier);
+            skill.finalResearchCost = (int)(skill.baseResearchCost * GameManager.Instance.researchCostMultiplier);
             // Debug.Log("Skill: " + skill.skillName + skill.finalMoneyCost + skill.finalResearchCost);
 
             // Get references to the TMP fields inside the prefab
