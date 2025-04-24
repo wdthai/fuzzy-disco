@@ -52,10 +52,9 @@ public class RegionInfoPanel : MonoBehaviour
 
     IEnumerator AutoRefreshRegion()
     {
-        while (true)
+        while (currentRegion != null)
         {
-            if (currentRegion != null)
-                Refresh(currentRegion);
+            Refresh(currentRegion);
             yield return new WaitForSeconds(2f);
         }
     }

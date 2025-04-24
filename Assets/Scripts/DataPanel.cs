@@ -61,9 +61,10 @@ public class DataPanel : MonoBehaviour
     public void OpenPanel()
     {
         Refresh();
+        SkillsPanel.Instance.ClosePanel();
+        RegionInfoPanel.Instance.ClosePanel();
         gameObject.SetActive(true);
         closeButton.gameObject.SetActive(true);
-        SkillsPanel.Instance.ClosePanel();
         Debug.Log("Data Panel Opened");
         GameManager.Instance.isTabOpen = true;
     }

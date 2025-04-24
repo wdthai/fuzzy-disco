@@ -52,4 +52,44 @@ public class SkillManager : MonoBehaviour
         GameManager.Instance.researchCostMultiplier *= skill.researchCostModifier;
         GameManager.Instance.policyCostMultiplier *= skill.policyCostModifier;
     }
+
+    public SkillSaveData SaveState(SkillData skill)
+    {
+        SkillSaveData skillSave = new SkillSaveData();
+        skillSave.skillName = skill.skillName;
+        skillSave.description = skill.description;
+
+        skillSave.moneyGenerationModifier = skill.moneyGenerationModifier;
+        skillSave.researchGenerationModifier = skill.researchGenerationModifier;
+        skillSave.moneyCostModifier = skill.moneyCostModifier;
+        skillSave.researchCostModifier = skill.researchCostModifier;
+        skillSave.policyCostModifier = skill.policyCostModifier;
+
+        skillSave.baseResearchCost = skill.baseResearchCost;
+        skillSave.baseMoneyCost = skill.baseMoneyCost;
+        skillSave.finalResearchCost = skill.finalResearchCost;
+        skillSave.finalMoneyCost = skill.finalMoneyCost;
+        skillSave.isUnlocked = skill.isUnlocked;
+
+        return skillSave;
+    }
+
+    public SkillData LoadState(SkillSaveData skillSave)
+    {
+        SkillData skill = new SkillData();
+        skill.description = skillSave.description;
+        skill.moneyGenerationModifier = skillSave.moneyGenerationModifier;
+        skill.researchGenerationModifier = skillSave.researchGenerationModifier;
+        skill.moneyCostModifier = skillSave.moneyCostModifier;
+        skill.researchCostModifier = skillSave.researchCostModifier;
+        skill.policyCostModifier = skillSave.policyCostModifier;
+
+        skill.baseResearchCost = skillSave.baseResearchCost;
+        skill.baseMoneyCost = skillSave.baseMoneyCost;
+        skill.finalResearchCost = skillSave.finalResearchCost;
+        skill.finalMoneyCost = skillSave.finalMoneyCost;
+        skill.isUnlocked = skillSave.isUnlocked;
+
+        return skill;
+    }
 }

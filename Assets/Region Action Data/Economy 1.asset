@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
-  m_Name: Pollution 1
+  m_Name: Economy 1
   m_EditorClassIdentifier: 
-  actionName: Air Pollution
-  description: increase air quality (local health)
+  actionName: Economy 1
+  description: 
   prerequisites: []
-  isRateChange: 0
-  economyChange: 0
+  isRateChange: 1
+  economyChange: 1
   educationChange: 0
   stabilityChange: 0
   complianceChange: 0
-  healthChange: 50
-  baseResearchCost: 10
-  baseMoneyCost: 10
-  finalResearchCost: 10
-  finalMoneyCost: 10
-  isUnlocked: 0
+  healthChange: 0
+  baseResearchCost: 5
+  baseMoneyCost: 5
+  finalResearchCost: 5
+  finalMoneyCost: 5
+  isUnlocked: 1

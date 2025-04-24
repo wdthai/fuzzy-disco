@@ -9,12 +9,13 @@ public class ActionData : ScriptableObject
     public string description;
     // public List<RegionData> targetRegions;
     public ActionData[] prerequisites; 
+    public bool isRateChange = false; // true affects ChangeRate, false affects direct values
 
     [Range(0, 100)] public int economyChange; // affects local economy change rate
     [Range(0, 100)] public int educationChange; // affects local change rate
     [Range(0, 100)] public int stabilityChange;
     [Range(0, 100)] public int complianceChange;
-    [Range(0, 100)] public float healthChange;
+    [Range(0, 100)] public int healthChange;
 
     public int baseResearchCost; // research points
     public int baseMoneyCost; // money

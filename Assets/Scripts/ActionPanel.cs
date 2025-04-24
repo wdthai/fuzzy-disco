@@ -21,10 +21,10 @@ public class ActionPanel : MonoBehaviour
 
         foreach (ActionData action in region.actions)
         {
-            if (action.isUnlocked) 
-            {
-                continue;
-            } // Skip if already unlocked
+            // if (action.isUnlocked) 
+            // {
+            //     continue;
+            // } // Skip if already unlocked
 
             GameObject actionUI = Instantiate(actionDataPrefab, dataContainer);
             TextMeshProUGUI[] textFields = actionUI.GetComponentsInChildren<TextMeshProUGUI>();
@@ -32,7 +32,7 @@ public class ActionPanel : MonoBehaviour
             
             action.finalMoneyCost = (int)(action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier);
             action.finalResearchCost = (int)(action.baseResearchCost * GameManager.Instance.researchCostMultiplier);
-            // Debug.Log("Skill: " + skill.skillName + skill.finalMoneyCost + skill.finalResearchCost);
+            Debug.Log("ACtion: ");
 
             // Instantiate UI prefab inside the dataContainer
             

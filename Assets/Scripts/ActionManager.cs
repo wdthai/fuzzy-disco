@@ -34,14 +34,68 @@ public class ActionManager : MonoBehaviour
         GameManager.Instance.money -= (int)(action.finalMoneyCost * GameManager.Instance.moneyCostMultiplier);
         action.isUnlocked = true;
         
-        // Debug.Log($"Unlocked Skill: {skill.skillName}");
-        region.economy += action.economyChange;
-        region.education += action.educationChange;
-        region.stability += action.stabilityChange;
-        region.compliance += action.complianceChange;
-        region.health += action.healthChange;
+        if (action.isRateChange)
+        {
+            region.economyChangeRate += action.economyChange;
+            region.educationChangeRate += action.educationChange;
+            region.stabilityChangeRate += action.stabilityChange;
+            region.complianceChangeRate += action.complianceChange;
+            region.healthChangeRate += action.healthChange;
+        }
+        else
+        {
+            region.economy += action.economyChange;
+            region.education += action.educationChange;
+            region.stability += action.stabilityChange;
+            region.compliance += action.complianceChange;
+            region.health += action.healthChange;
+        }
 
         RegionInfoPanel.Instance.Refresh(region);
         GameInfoPanel.Instance.Refresh(GameManager.Instance);
+    }
+
+    public ActionSaveData SaveState(ActionData action)
+    {
+        ActionSaveData actionSave = new ActionSaveData();
+        actionSave.actionName = action.actionName;
+        actionSave.description = action.description;
+        actionSave.isRateChange = action.isRateChange;
+
+        actionSave.economyChange = action.economyChange;
+        actionSave.educationChange = action.educationChange;
+        actionSave.stabilityChange = action.stabilityChange;
+        actionSave.complianceChange = action.complianceChange;
+        actionSave.healthChange = action.healthChange;
+
+        actionSave.baseResearchCost = action.baseResearchCost;
+        actionSave.baseMoneyCost = action.baseMoneyCost;
+        actionSave.finalResearchCost = action.finalResearchCost;
+        actionSave.finalMoneyCost = action.finalResearchCost;
+        actionSave.isUnlocked = action.isUnlocked;
+
+        return actionSave;
+    }
+
+    public ActionData LoadState(ActionSaveData actionSave)
+    {
+        ActionData action = new ActionData();
+        action.actionName = actionSave.actionName;
+        action.description = actionSave.description;
+        action.isRateChange = actionSave.isRateChange;
+
+        action.economyChange = actionSave.economyChange;
+        action.educationChange = actionSave.educationChange;
+        action.stabilityChange = actionSave.stabilityChange;
+        action.complianceChange = actionSave.complianceChange;
+        action.healthChange = actionSave.healthChange;
+
+        action.baseResearchCost = actionSave.baseResearchCost;
+        action.baseMoneyCost = actionSave.baseMoneyCost;
+        action.finalResearchCost = actionSave.finalResearchCost;
+        action.finalMoneyCost = action.finalMoneyCost;
+        action.isUnlocked = actionSave.isUnlocked;
+
+        return action;
     }
 }
