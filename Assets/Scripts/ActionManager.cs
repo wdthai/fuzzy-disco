@@ -18,10 +18,10 @@ public class ActionManager : MonoBehaviour
         if (GameManager.Instance.money < (int)(action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
 
         // Check prerequisites
-        foreach (ActionData pre in action.prerequisites)
-        {
-            if (!pre.isUnlocked) return false;
-        }
+        // foreach (ActionData pre in action.prerequisites)
+        // {
+        //     if (!pre.isUnlocked) return false;
+        // }
 
         return true;
     }

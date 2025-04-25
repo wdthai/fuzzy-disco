@@ -21,10 +21,10 @@ public class SkillManager : MonoBehaviour
         if (GameManager.Instance.money < (int)(skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
 
         // Check prerequisites
-        foreach (SkillData pre in skill.prerequisites)
-        {
-            if (!pre.isUnlocked) return false;
-        }
+        // foreach (SkillData pre in skill.prerequisites)
+        // {
+        //     if (!pre.isUnlocked) return false;
+        // }
 
         return true;
     }

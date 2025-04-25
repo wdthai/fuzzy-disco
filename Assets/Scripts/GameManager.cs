@@ -28,7 +28,25 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        allRegions = new List<Region>(FindObjectsOfType<Region>());
+        if (!SaveManager.isNewGame)
+        {
+            allRegions = new List<Region>(FindObjectsOfType<Region>());
+            GameSaveData gameSave = SaveManager.Load();
+            LoadState(gameSave);
+        }
+        else
+        {
+            money = 0;
+            research = 0;
+            globalHealth = 100f;
+            moneyGenerationMultiplier = 1f;
+            researchGenerationMultiplier = 1f;
+            moneyCostMultiplier = 1f;
+            researchCostMultiplier = 1f;
+            policyCostMultiplier = 1f;
+            allRegions = new List<Region>(FindObjectsOfType<Region>());
+        }
+
         StartCoroutine(Tick());
     }   
 

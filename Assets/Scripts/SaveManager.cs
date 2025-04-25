@@ -6,9 +6,18 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
+    public static bool isNewGame = false;
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // prevent duplicates
+        }
     }
     public static void Save(GameSaveData data)
     {

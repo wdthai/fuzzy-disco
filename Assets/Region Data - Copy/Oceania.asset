@@ -19,9 +19,11 @@ MonoBehaviour:
   education: 75
   stability: 90
   compliance: 70
-  health: 50
+  health: 46.599987
   economyChangeRate: 0
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0
   healthChangeRate: -2
+  isCritical: 0
+  isDead: 0

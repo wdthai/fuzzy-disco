@@ -20,6 +20,5 @@ public class RegionData : ScriptableObject
     [Range(-100, 5)] public int healthChangeRate; // affects global health
     public bool isCritical = false;
     public bool isDead = false;
-    //
 
 }
