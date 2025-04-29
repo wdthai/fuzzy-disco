@@ -5,14 +5,17 @@ using UnityEngine;
 public class Region : MonoBehaviour
 {
     public RegionData data;
-    // public Coroutine refreshCoroutine;
+    public RegionAI ai;
+
+    void Awake() { ai = GetComponent<RegionAI>();  }
+    void Start() { ai.region = this; }
 
     private void OnMouseDown()
     {
         if (GameManager.Instance.isTabOpen)
             return;
             
-        Debug.Log("Selected Region: " + data.regionName);
+        // Debug.Log("Selected Region: " + data.regionName);
         RegionInfoPanel.Instance.OpenPanel(data);
     }
 
@@ -27,17 +30,21 @@ public class Region : MonoBehaviour
             return;
         }
 
-        data.economy += data.economyChangeRate;  Random.Range(-(100-data.stability), (100-data.stability));
-        data.education += data.educationChangeRate;  Random.Range(-(100-data.stability), (100-data.stability));
-        data.stability += data.stabilityChangeRate;
-        data.compliance += data.complianceChangeRate;
-        data.health += data.healthChangeRate / 10f;
+        data.economy += data.economyChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.tax += data.economyChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.education += data.educationChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.stability += data.stabilityChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.compliance += data.complianceChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.happiness += data.happinessChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.health += (data.healthChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
 
         // Clamp values to 0-100 range
         data.economy = Mathf.Clamp(data.economy, 0, 100);
+        data.tax = Mathf.Clamp(data.tax, 0, 100);
         data.education = Mathf.Clamp(data.education, 0, 100);
         data.stability = Mathf.Clamp(data.stability, 0, 100);
         data.compliance = Mathf.Clamp(data.compliance, 0, 100);
+        data.happiness = Mathf.Clamp(data.happiness, 0, 100);
         data.health = Mathf.Clamp(data.health, 0, 100);
     }
 
@@ -46,21 +53,33 @@ public class Region : MonoBehaviour
         RegionSaveData regionSave = new RegionSaveData();
         regionSave.regionName = data.regionName;
         regionSave.challengeName = data.challengeName;
+
         regionSave.economy = data.economy;
+        regionSave.tax = data.tax;
         regionSave.education = data.education;
         regionSave.stability = data.stability;
         regionSave.compliance = data.compliance;
+        regionSave.happiness = data.happiness;
         regionSave.health = data.health;
+
         regionSave.economyChangeRate = data.economyChangeRate;
+        regionSave.taxChangeRate = data.taxChangeRate;
         regionSave.educationChangeRate = data.educationChangeRate;
         regionSave.stabilityChangeRate = data.stabilityChangeRate;
         regionSave.complianceChangeRate = data.complianceChangeRate;
+        regionSave.happinessChangeRate = data.happinessChangeRate;
         regionSave.healthChangeRate = data.healthChangeRate;
 
         regionSave.actions = new List<ActionSaveData>();
         foreach (ActionData action in data.actions)
         {
             regionSave.actions.Add(ActionManager.Instance.SaveState(action));
+        }
+
+        regionSave.actionsAI = new List<ActionSaveData>();
+        foreach (ActionData action in data.actionsAI)
+        {
+            regionSave.actionsAI.Add(ActionManager.Instance.SaveState(action));
         }
         
         return regionSave;
@@ -70,15 +89,21 @@ public class Region : MonoBehaviour
     {
         data.regionName = regionSave.regionName;
         data.challengeName = regionSave.challengeName;
+
         data.economy = regionSave.economy;
+        data.tax = regionSave.tax;
         data.education = regionSave.education;
         data.stability = regionSave.stability;
         data.compliance = regionSave.compliance;
+        data.happiness = regionSave.happiness;
         data.health = regionSave.health;
+        
         data.economyChangeRate = regionSave.economyChangeRate;
+        data.taxChangeRate = regionSave.taxChangeRate;
         data.educationChangeRate = regionSave.educationChangeRate;
         data.stabilityChangeRate = regionSave.stabilityChangeRate;
         data.complianceChangeRate = regionSave.complianceChangeRate;
+        data.happinessChangeRate = regionSave.happinessChangeRate;
         data.healthChangeRate = regionSave.healthChangeRate;
 
         data.actions = new List<ActionData>();
@@ -88,6 +113,16 @@ public class Region : MonoBehaviour
             if (action != null)
             {
                 data.actions.Add(action);
+            }
+        }
+
+        data.actionsAI = new List<ActionData>();
+        foreach (ActionSaveData actionSave in regionSave.actionsAI)
+        {
+            ActionData action = ActionManager.Instance.LoadState(actionSave);
+            if (action != null)
+            {
+                data.actionsAI.Add(action);
             }
         }
     }

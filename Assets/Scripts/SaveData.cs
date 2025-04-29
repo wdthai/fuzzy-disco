@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameSaveData 
 {
-    public int money;
-    public int research;
+    public float money;
+    public float research;
     public float globalHealth;
     public float moneyGenerationMultiplier; // baseRate * multiplier
     public float researchGenerationMultiplier;
@@ -23,17 +23,24 @@ public class RegionSaveData
 {
     public string regionName;
     public string challengeName; // unique regional problem
-    [Range(0, 100)] public int economy; // affects global money statistic
-    [Range(0, 100)] public int education; // research
-    [Range(0, 100)] public int stability; // research multipliter
-    [Range(0, 100)] public int compliance; // money and policy effectiveness
-    [Range(0, 100)] public float health; // affects global health
-    [Range(-100, 100)] public int economyChangeRate; // affects local money generation
-    [Range(-100, 100)] public int educationChangeRate; // affects max research generation
-    [Range(-100, 100)] public int stabilityChangeRate; // affects research generation
-    [Range(-100, 100)] public int complianceChangeRate; // affects effectiveness of policies and money gen
-    [Range(-100, 5)] public int healthChangeRate; // affects global health
+    
+    public float economy; // affects global money statistic
+    public float tax; // affects global money statistic
+    public float education; // research
+    public float stability; // research multipliter
+    public float compliance; // money and policy effectiveness
+    public float happiness; // AI FSM state
+    public float health; // affects global health
+
+    public float economyChangeRate; // affects local money generation
+    public float taxChangeRate; // affects local contribution to global economy
+    public float educationChangeRate; // affects max research generation
+    public float stabilityChangeRate; // affects research generation
+    public float complianceChangeRate; // affects effectiveness of policies and money gen
+    public float happinessChangeRate; // affects AI FSM state
+    public float healthChangeRate; // affects global health
     public List<ActionSaveData> actions;
+    public List<ActionSaveData> actionsAI; // actions that must be completed before this one can be taken
 }
 
 [System.Serializable]
@@ -41,7 +48,6 @@ public class SkillSaveData
 {
     public string skillName;
     public string description;
-    public List<string> prerequisites; 
 
     // global modifiers
     public float moneyGenerationModifier = 1f;
@@ -50,10 +56,11 @@ public class SkillSaveData
     public float researchCostModifier = 1f;
     public float policyCostModifier = 1f;
 
-    public int baseResearchCost; // research points
-    public int baseMoneyCost; // money
-    public int finalResearchCost; // research points
-    public int finalMoneyCost; // money
+    public float baseResearchCost; // research points
+    public float baseMoneyCost; // money
+    public float finalResearchCost; // research points
+    public float finalMoneyCost; // money
+    public int ticksToComplete;
     public bool isUnlocked = false; 
 }
 
@@ -62,20 +69,21 @@ public class ActionSaveData
 {
     public string actionName;
     public string description;
-    // public List<RegionData> targetRegions;
-    public List<string> prerequisites;
     public bool isRateChange = false; // true affects ChangeRate, false affects direct values
 
-    [Range(0, 100)] public int economyChange; // affects local economy change rate
-    [Range(0, 100)] public int educationChange; // affects local change rate
-    [Range(0, 100)] public int stabilityChange;
-    [Range(0, 100)] public int complianceChange;
-    [Range(0, 100)] public int healthChange;
+     public float economyChange; // affects local economy change rate
+     public float taxChange; // affects local contribution to global economy
+     public float educationChange; // affects local change rate
+     public float stabilityChange;
+     public float complianceChange;
+     public float happinessChange; // affects AI FSM state
+     public float healthChange;
 
-    public int baseResearchCost; // research points
-    public int baseMoneyCost; // money
-    public int finalResearchCost; // research points
-    public int finalMoneyCost; // money
+    public float baseResearchCost; // research points
+    public float baseMoneyCost; // money
+    public float finalResearchCost; // research points
+    public float finalMoneyCost; // money
+    public int ticksToComplete;
     public bool isUnlocked = false;
 }
 

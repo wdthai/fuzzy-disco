@@ -14,8 +14,8 @@ public class ActionManager : MonoBehaviour
     public bool isExecutable(ActionData action)
     {
         if (action.isUnlocked) return false;
-        if (GameManager.Instance.research < (int)(action.baseResearchCost * GameManager.Instance.researchCostMultiplier)) return false;
-        if (GameManager.Instance.money < (int)(action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
+        if (GameManager.Instance.research < (action.baseResearchCost * GameManager.Instance.researchCostMultiplier)) return false;
+        if (GameManager.Instance.money < (action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
 
         // Check prerequisites
         // foreach (ActionData pre in action.prerequisites)
@@ -26,29 +26,35 @@ public class ActionManager : MonoBehaviour
         return true;
     }
 
-    public void ExecuteAction(ActionData action, RegionData region)
+    public void ExecuteAction(ActionData action, RegionData region, bool isAI = false)
     {
-        // if (!isUnlockable(skill)) return;
+        if (!isExecutable(action)) return;
 
-        GameManager.Instance.research -= (int)(action.finalResearchCost * GameManager.Instance.researchCostMultiplier);
-        GameManager.Instance.money -= (int)(action.finalMoneyCost * GameManager.Instance.moneyCostMultiplier);
-        action.isUnlocked = true;
+        if (!isAI){
+            GameManager.Instance.research -= (action.finalResearchCost * GameManager.Instance.researchCostMultiplier);
+            GameManager.Instance.money -= (action.finalMoneyCost * GameManager.Instance.moneyCostMultiplier);
+            action.isUnlocked = true;
+        }
         
         if (action.isRateChange)
         {
-            region.economyChangeRate += action.economyChange;
-            region.educationChangeRate += action.educationChange;
-            region.stabilityChangeRate += action.stabilityChange;
-            region.complianceChangeRate += action.complianceChange;
-            region.healthChangeRate += action.healthChange;
+            region.economyChangeRate += action.economyChange * region.compliance / 100f;
+            region.taxChangeRate += action.taxChange * region.compliance / 100f;
+            region.educationChangeRate += action.educationChange * region.compliance / 100f;
+            region.stabilityChangeRate += action.stabilityChange * region.compliance / 100f;
+            region.complianceChangeRate += action.complianceChange * region.compliance / 100f;
+            region.happinessChangeRate += action.happinessChange * region.compliance / 100f;
+            region.healthChangeRate += action.healthChange * region.compliance / 100f;
         }
         else
         {
-            region.economy += action.economyChange;
-            region.education += action.educationChange;
-            region.stability += action.stabilityChange;
-            region.compliance += action.complianceChange;
-            region.health += action.healthChange;
+            region.economy += action.economyChange * region.compliance / 100f;
+            region.tax += action.taxChange * region.compliance / 100f;
+            region.education += action.educationChange * region.compliance / 100f;
+            region.stability += action.stabilityChange * region.compliance / 100f;
+            region.compliance += action.complianceChange * region.compliance / 100f;
+            region.happiness += action.happinessChange * region.compliance / 100f;
+            region.health += action.healthChange * region.compliance / 100f;
         }
 
         RegionInfoPanel.Instance.Refresh(region);
@@ -63,15 +69,18 @@ public class ActionManager : MonoBehaviour
         actionSave.isRateChange = action.isRateChange;
 
         actionSave.economyChange = action.economyChange;
+        actionSave.taxChange = action.taxChange;
         actionSave.educationChange = action.educationChange;
         actionSave.stabilityChange = action.stabilityChange;
         actionSave.complianceChange = action.complianceChange;
+        actionSave.happinessChange = action.happinessChange;
         actionSave.healthChange = action.healthChange;
 
         actionSave.baseResearchCost = action.baseResearchCost;
         actionSave.baseMoneyCost = action.baseMoneyCost;
         actionSave.finalResearchCost = action.finalResearchCost;
         actionSave.finalMoneyCost = action.finalResearchCost;
+        actionSave.ticksToComplete = action.ticksToComplete;
         actionSave.isUnlocked = action.isUnlocked;
 
         return actionSave;
@@ -85,15 +94,18 @@ public class ActionManager : MonoBehaviour
         action.isRateChange = actionSave.isRateChange;
 
         action.economyChange = actionSave.economyChange;
+        action.taxChange = actionSave.taxChange;
         action.educationChange = actionSave.educationChange;
         action.stabilityChange = actionSave.stabilityChange;
         action.complianceChange = actionSave.complianceChange;
+        action.happinessChange = actionSave.happinessChange;
         action.healthChange = actionSave.healthChange;
 
         action.baseResearchCost = actionSave.baseResearchCost;
         action.baseMoneyCost = actionSave.baseMoneyCost;
         action.finalResearchCost = actionSave.finalResearchCost;
         action.finalMoneyCost = action.finalMoneyCost;
+        action.ticksToComplete = actionSave.ticksToComplete;
         action.isUnlocked = actionSave.isUnlocked;
 
         return action;

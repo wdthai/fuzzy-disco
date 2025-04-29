@@ -7,18 +7,18 @@ public class SkillData : ScriptableObject
 {
     public string skillName;
     public string description;
-    public SkillData[] prerequisites; 
 
     // global modifiers
-    public float moneyGenerationModifier = 1f;
-    public float researchGenerationModifier = 1f;
-    public float moneyCostModifier = 1f;
-    public float researchCostModifier = 1f;
-    public float policyCostModifier = 1f;
+    public float moneyGenerationModifier = 0f;
+    public float researchGenerationModifier = 0f;
+    public float moneyCostModifier = 0f;
+    public float researchCostModifier = 0f;
+    public float policyCostModifier = 0f;
 
-    public int baseResearchCost; // research points
-    public int baseMoneyCost; // money
-    public int finalResearchCost; // research points
-    public int finalMoneyCost; // money
+    public float baseResearchCost; // research points
+    public float baseMoneyCost; // money
+    public float finalResearchCost; // research points
+    public float finalMoneyCost; // money
+    public int ticksToComplete;
     public bool isUnlocked = false; 
 }

@@ -10,16 +10,11 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
     public GameObject pauseMenu;
-    public Button pauseButton;
-    public Button resumeButton;
-    public Button saveButton;
-    public Button loadButton;
-    public Button quitButton;
+    public Button pauseButton, resumeButton, saveButton, loadButton, quitButton;
     private bool isPaused = false;
 
     public GameObject confirmPanel;
-    public Button confirmButton;
-    public Button cancelButton;
+    public Button confirmButton, cancelButton;
     public TextMeshProUGUI warningText;
     public int menuOption = 0; // 1 = save, 2 = load, 3 = quit
 
@@ -97,13 +92,13 @@ public class MenuManager : MonoBehaviour
     {
         if (menuOption == 1)
         {
-            GameSaveData gameSave = SaveManager.Load();
-            GameManager.Instance.LoadState(gameSave);
+            SaveManager.Save(GameManager.Instance.SaveState());
             confirmPanel.SetActive(false);
         }
         else if (menuOption == 2)
         {
-            SaveManager.Save(GameManager.Instance.SaveState());
+            GameSaveData gameSave = SaveManager.Load();
+            GameManager.Instance.LoadState(gameSave);
             confirmPanel.SetActive(false);
         }
         else if (menuOption == 3)

@@ -30,9 +30,8 @@ public class ActionPanel : MonoBehaviour
             TextMeshProUGUI[] textFields = actionUI.GetComponentsInChildren<TextMeshProUGUI>();
             Button button = actionUI.GetComponentInChildren<Button>();
             
-            action.finalMoneyCost = (int)(action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier);
-            action.finalResearchCost = (int)(action.baseResearchCost * GameManager.Instance.researchCostMultiplier);
-            Debug.Log("ACtion: ");
+            action.finalMoneyCost = (action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier);
+            action.finalResearchCost = (action.baseResearchCost * GameManager.Instance.researchCostMultiplier);
 
             // Instantiate UI prefab inside the dataContainer
             
@@ -42,8 +41,8 @@ public class ActionPanel : MonoBehaviour
             // Set data
             textFields[0].text = $"{action.actionName}";
             textFields[1].text = $"Desc: {action.description}";
-            textFields[2].text = $"Money: {action.finalMoneyCost}";
-            textFields[3].text = $"Research: {action.finalResearchCost}";
+            textFields[2].text = $"Money: {action.finalMoneyCost.ToString("F0")}";
+            textFields[3].text = $"Research: {action.finalResearchCost.ToString("F0")}";
         }
     }
 }

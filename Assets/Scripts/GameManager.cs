@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public int money = 0;
-    public int research = 0;
-    [Range(0, 100)] public float globalHealth = 100;
+    public float money = 0;
+    public float research = 0;
+    public float globalHealth = 100;
+    
     public float moneyGenerationMultiplier = 1f; // baseRate * multiplier
     public float researchGenerationMultiplier = 1f;
     public float moneyCostMultiplier = 1f; // baseCost * reduction
@@ -74,21 +75,32 @@ public class GameManager : MonoBehaviour
 
     public void OnTick()
     {
-        
+        float moneyIncome = 0;
+        float researchIncome = 0;
         globalHealth = 0f;
         foreach (Region region in allRegions)
         {
-            
-            money += (int) (region.data.economy * region.data.compliance / 100f); // compliance to tax
-            research += (int) (region.data.education * region.data.stability / 100f); // stability for research
+            moneyIncome += 
+            (
+                region.data.economy 
+                * (region.data.tax / 100f)
+                * (Random.Range(100f - (100-region.data.stability), 100f + (100-region.data.stability)) / 100f)
+            );
+            researchIncome += 
+            (
+                region.data.education
+                * (Random.Range(1f - (100-region.data.stability) / 100f, 1f + (100-region.data.stability) / 100f))
+            ); 
 
             globalHealth += region.data.health;
         }
+
+        moneyIncome /= allRegions.Count;
+        researchIncome /= allRegions.Count;
         globalHealth /= allRegions.Count;
 
-        money *= (int) moneyGenerationMultiplier;
-        research *= (int) researchGenerationMultiplier;
-
+        money += moneyIncome * moneyGenerationMultiplier;
+        research += researchIncome * researchGenerationMultiplier;
     }
 
     public GameSaveData SaveState()
@@ -153,5 +165,7 @@ public class GameManager : MonoBehaviour
             }
             
         }
+
+        Tick();
     }
 }

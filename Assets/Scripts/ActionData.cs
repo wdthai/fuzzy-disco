@@ -11,16 +11,19 @@ public class ActionData : ScriptableObject
     public ActionData[] prerequisites; 
     public bool isRateChange = false; // true affects ChangeRate, false affects direct values
 
-    [Range(0, 100)] public int economyChange; // affects local economy change rate
-    [Range(0, 100)] public int educationChange; // affects local change rate
-    [Range(0, 100)] public int stabilityChange;
-    [Range(0, 100)] public int complianceChange;
-    [Range(0, 100)] public int healthChange;
+    [Range(-100, 100)] public float economyChange; // affects local economy change rate
+    [Range(-100, 100)] public float taxChange; // affects local contribution to global economy
+    [Range(-100, 100)] public float educationChange; // affects local change rate
+    [Range(-100, 100)] public float stabilityChange;
+    [Range(-100, 100)] public float complianceChange;
+    [Range(-100, 100)] public float happinessChange;
+    [Range(-100, 100)] public float healthChange;
 
-    public int baseResearchCost; // research points
-    public int baseMoneyCost; // money
-    public int finalResearchCost; // research points
-    public int finalMoneyCost; // money
+    public float baseResearchCost; // research points
+    public float baseMoneyCost; // money
+    public float finalResearchCost; // research points
+    public float finalMoneyCost; // money
+    public int ticksToComplete;
     public bool isUnlocked = false;
 
 }

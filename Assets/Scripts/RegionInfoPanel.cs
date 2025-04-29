@@ -23,11 +23,11 @@ public class RegionInfoPanel : MonoBehaviour
     public void Refresh(RegionData region)
     {
         nameText.text = region.regionName;
-        wealthText.text = $"Wealth {region.economy}"  ;
-        educationText.text = $"Education {region.education}";
-        stabilityText.text = $"Stability {region.stability}";
-        complianceText.text = $"Compliance {region.compliance}";
-        sustainabilityText.text = $"Health {region.health}";
+        wealthText.text = $"Wealth {region.economy.ToString("F2")}"  ;
+        educationText.text = $"Education {region.education.ToString("F2")}";
+        stabilityText.text = $"Stability {region.stability.ToString("F2")}";
+        complianceText.text = $"Compliance {region.compliance.ToString("F2")}";
+        sustainabilityText.text = $"Health {region.health.ToString("F2")}";
 
         ActionPanel.Instance.Refresh(region); // Refresh the ActionPanel with the current region data
     }

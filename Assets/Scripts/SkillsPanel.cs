@@ -51,8 +51,8 @@ public class SkillsPanel : MonoBehaviour
             } // Skip if already unlocked
 
 
-            skill.finalMoneyCost = (int)(skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier);
-            skill.finalResearchCost = (int)(skill.baseResearchCost * GameManager.Instance.researchCostMultiplier);
+            skill.finalMoneyCost = (skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier);
+            skill.finalResearchCost = (skill.baseResearchCost * GameManager.Instance.researchCostMultiplier);
             // Debug.Log("Skill: " + skill.skillName + skill.finalMoneyCost + skill.finalResearchCost);
 
             // Get references to the TMP fields inside the prefab
@@ -61,8 +61,8 @@ public class SkillsPanel : MonoBehaviour
             // Set data
             textFields[0].text = $"{skill.skillName}";
             textFields[1].text = $"Desc: {skill.description}";
-            textFields[2].text = $"Money: {skill.finalMoneyCost}";
-            textFields[3].text = $"Research: {skill.finalResearchCost}";
+            textFields[2].text = $"Money: {skill.finalMoneyCost.ToString("F0")}";
+            textFields[3].text = $"Research: {skill.finalResearchCost.ToString("F0")}";
         }
     }
 

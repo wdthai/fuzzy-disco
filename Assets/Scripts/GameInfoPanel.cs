@@ -22,8 +22,8 @@ public class GameInfoPanel : MonoBehaviour
 
     public void Refresh(GameManager game)
     {
-        moneyText.text = $"Money: {game.money}" ;
-        researchText.text = $"Research: {game.research}" ;
-        healthText.text = $"Health: {game.globalHealth}%";
+        moneyText.text = $"Money: {game.money.ToString("F0")}" ;
+        researchText.text = $"Research: {game.research.ToString("F0")}" ;
+        healthText.text = $"Health: {game.globalHealth.ToString("F2")}%";
     }
 }

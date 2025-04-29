@@ -17,14 +17,8 @@ public class SkillManager : MonoBehaviour
     public bool isUnlockable(SkillData skill)
     {
         if (skill.isUnlocked) return false;
-        if (GameManager.Instance.research < (int)(skill.baseResearchCost * GameManager.Instance.researchCostMultiplier)) return false;
-        if (GameManager.Instance.money < (int)(skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
-
-        // Check prerequisites
-        // foreach (SkillData pre in skill.prerequisites)
-        // {
-        //     if (!pre.isUnlocked) return false;
-        // }
+        if (GameManager.Instance.research < (skill.baseResearchCost * GameManager.Instance.researchCostMultiplier)) return false;
+        if (GameManager.Instance.money < (skill.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
 
         return true;
     }
@@ -33,8 +27,8 @@ public class SkillManager : MonoBehaviour
     {
         if (!isUnlockable(skill)) return;
 
-        GameManager.Instance.research -= (int)(skill.finalResearchCost * GameManager.Instance.researchCostMultiplier);
-        GameManager.Instance.money -= (int)(skill.finalMoneyCost * GameManager.Instance.moneyCostMultiplier);
+        GameManager.Instance.research -= (skill.finalResearchCost * GameManager.Instance.researchCostMultiplier);
+        GameManager.Instance.money -= (skill.finalMoneyCost * GameManager.Instance.moneyCostMultiplier);
         skill.isUnlocked = true;
         
         // Debug.Log($"Unlocked Skill: {skill.skillName}");
@@ -46,11 +40,11 @@ public class SkillManager : MonoBehaviour
 
     public void applySkill(SkillData skill)
     {
-        GameManager.Instance.moneyGenerationMultiplier *= skill.moneyGenerationModifier;
-        GameManager.Instance.researchGenerationMultiplier *= skill.researchGenerationModifier;
-        GameManager.Instance.moneyCostMultiplier *= skill.moneyCostModifier;
-        GameManager.Instance.researchCostMultiplier *= skill.researchCostModifier;
-        GameManager.Instance.policyCostMultiplier *= skill.policyCostModifier;
+        GameManager.Instance.moneyGenerationMultiplier += skill.moneyGenerationModifier;
+        GameManager.Instance.researchGenerationMultiplier += skill.researchGenerationModifier;
+        GameManager.Instance.moneyCostMultiplier += skill.moneyCostModifier;
+        GameManager.Instance.researchCostMultiplier += skill.researchCostModifier;
+        GameManager.Instance.policyCostMultiplier += skill.policyCostModifier;
     }
 
     public SkillSaveData SaveState(SkillData skill)
@@ -69,6 +63,7 @@ public class SkillManager : MonoBehaviour
         skillSave.baseMoneyCost = skill.baseMoneyCost;
         skillSave.finalResearchCost = skill.finalResearchCost;
         skillSave.finalMoneyCost = skill.finalMoneyCost;
+        skillSave.ticksToComplete = skill.ticksToComplete;
         skillSave.isUnlocked = skill.isUnlocked;
 
         return skillSave;
@@ -77,7 +72,9 @@ public class SkillManager : MonoBehaviour
     public SkillData LoadState(SkillSaveData skillSave)
     {
         SkillData skill = new SkillData();
+        skill.skillName = skillSave.skillName;
         skill.description = skillSave.description;
+        
         skill.moneyGenerationModifier = skillSave.moneyGenerationModifier;
         skill.researchGenerationModifier = skillSave.researchGenerationModifier;
         skill.moneyCostModifier = skillSave.moneyCostModifier;
@@ -88,6 +85,7 @@ public class SkillManager : MonoBehaviour
         skill.baseMoneyCost = skillSave.baseMoneyCost;
         skill.finalResearchCost = skillSave.finalResearchCost;
         skill.finalMoneyCost = skillSave.finalMoneyCost;
+        skill.ticksToComplete = skillSave.ticksToComplete;
         skill.isUnlocked = skillSave.isUnlocked;
 
         return skill;
