@@ -73,7 +73,7 @@ public class RegionAI : MonoBehaviour
     public ActionData GetBestAction()
     {
         ActionData bestAction = null;
-        float highestUtility = 0f;
+        float highestUtility = float.MinValue;
 
         foreach (ActionData action in region.data.actionsAI)
         {

@@ -21,14 +21,14 @@ public class Region : MonoBehaviour
 
     public void Refresh()
     {
-        if (data.health <= 5){
-            Debug.Log("Region " + data.regionName + " is in critical condition.");
-            data.isCritical = true;
-        }
-        if (data.health <= 0){
-            data.isDead = true;
-            return;
-        }
+        // if (data.health <= 5){
+        //     Debug.Log("Region " + data.regionName + " is in critical condition.");
+        //     data.isCritical = true;
+        // }
+        // if (data.health <= 0){
+        //     data.isDead = true;
+        //     return;
+        // }
 
         data.economy += data.economyChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
         data.tax += data.economyChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
@@ -106,23 +106,27 @@ public class Region : MonoBehaviour
         data.happinessChangeRate = regionSave.happinessChangeRate;
         data.healthChangeRate = regionSave.healthChangeRate;
 
-        data.actions = new List<ActionData>();
         foreach (ActionSaveData actionSave in regionSave.actions)
         {
-            ActionData action = ActionManager.Instance.LoadState(actionSave);
-            if (action != null)
+            foreach (ActionData action in data.actions)
             {
-                data.actions.Add(action);
+                if (action.actionName == actionSave.actionName)
+                {
+                    ActionManager.Instance.LoadState(action, actionSave);
+                    break;
+                }
             }
         }
 
-        data.actionsAI = new List<ActionData>();
         foreach (ActionSaveData actionSave in regionSave.actionsAI)
         {
-            ActionData action = ActionManager.Instance.LoadState(actionSave);
-            if (action != null)
+            foreach (ActionData action in data.actionsAI)
             {
-                data.actionsAI.Add(action);
+                if (action.actionName == actionSave.actionName)
+                {
+                    ActionManager.Instance.LoadState(action, actionSave);
+                    break;
+                }
             }
         }
     }

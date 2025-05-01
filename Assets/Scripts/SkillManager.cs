@@ -69,9 +69,9 @@ public class SkillManager : MonoBehaviour
         return skillSave;
     }
 
-    public SkillData LoadState(SkillSaveData skillSave)
+    public void LoadState(SkillData skill, SkillSaveData skillSave)
     {
-        SkillData skill = new SkillData();
+        // SkillData skill = new SkillData();
         skill.skillName = skillSave.skillName;
         skill.description = skillSave.description;
         
@@ -87,7 +87,5 @@ public class SkillManager : MonoBehaviour
         skill.finalMoneyCost = skillSave.finalMoneyCost;
         skill.ticksToComplete = skillSave.ticksToComplete;
         skill.isUnlocked = skillSave.isUnlocked;
-
-        return skill;
     }
 }

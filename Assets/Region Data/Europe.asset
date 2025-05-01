@@ -15,13 +15,17 @@ MonoBehaviour:
   regionName: Europe
   challengeName: 
   actions: []
-  economy: 80
+  actionsAI:
+  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
+  economy: 100
+  tax: 100
   education: 90
   stability: 70
   compliance: 70
   happiness: 0
-  health: 53.99487
-  economyChangeRate: 0
+  health: 45.648525
+  economyChangeRate: 7
+  taxChangeRate: 7
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0

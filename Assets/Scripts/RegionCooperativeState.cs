@@ -11,7 +11,7 @@ public class RegionCooperativeState : RegionBaseState
     public ActionData nextAction;
     public override void Enter(RegionAI regionAI)
     {
-        Debug.Log(regionAI.region.data.regionName +" Entering Cooperative State");
+        // Debug.Log(regionAI.region.data.regionName +" Entering Cooperative State");
 
         if (regionAI.region.data.tax < newTax) regionAI.region.data.tax = newTax;
         if (regionAI.region.data.compliance < newCompliance) regionAI.region.data.compliance = newCompliance;

@@ -15,14 +15,19 @@ MonoBehaviour:
   regionName: Africa
   challengeName: 
   actions:
-  - {fileID: 0}
-  economy: 30
+  - {fileID: 11400000, guid: e59d6dfc76819b94d83fc56555563df0, type: 2}
+  actionsAI:
+  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
+  - {fileID: 11400000, guid: 756afc680535e1d4aba467af4e3dcef1, type: 2}
+  economy: 89.09555
+  tax: 100
   education: 50
   stability: 30
-  compliance: 40
+  compliance: 60
   happiness: 0
-  health: 37.047436
-  economyChangeRate: 0
+  health: 32.921776
+  economyChangeRate: 9
+  taxChangeRate: 9
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0

@@ -15,13 +15,21 @@ MonoBehaviour:
   regionName: Oceania
   challengeName: 
   actions: []
+  actionsAI:
+  - {fileID: 11400000, guid: 756afc680535e1d4aba467af4e3dcef1, type: 2}
   economy: 70
+  tax: 0
   education: 75
   stability: 90
   compliance: 70
-  health: 50
+  happiness: 0
+  health: 75
   economyChangeRate: 0
+  taxChangeRate: 0
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0
+  happinessChangeRate: 0
   healthChangeRate: -2
+  isCritical: 0
+  isDead: 0

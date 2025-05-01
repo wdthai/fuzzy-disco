@@ -9,7 +9,7 @@ public class GameInfoPanel : MonoBehaviour
     public static GameInfoPanel Instance;
     public TextMeshProUGUI moneyText, researchText, healthText;
 
-    public Button dataButton, skillButton;
+    public Button dataButton, skillButton, consoleButton;
 
     // Start is called before the first frame update
 
@@ -18,6 +18,7 @@ public class GameInfoPanel : MonoBehaviour
         Instance = this;
         dataButton.onClick.AddListener(() => DataPanel.Instance.OpenPanel());
         skillButton.onClick.AddListener(() => SkillsPanel.Instance.OpenPanel());
+        consoleButton.onClick.AddListener(() => ConsolePanel.Instance.Toggle());
     }
 
     public void Refresh(GameManager game)

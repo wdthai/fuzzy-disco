@@ -15,13 +15,21 @@ MonoBehaviour:
   regionName: S America
   challengeName: 
   actions: []
-  economy: 60
+  actionsAI:
+  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
+  economy: 100
+  tax: 100
   education: 60
   stability: 50
   compliance: 60
-  health: 45
-  economyChangeRate: 0
+  happiness: 0
+  health: 23.60637
+  economyChangeRate: 6
+  taxChangeRate: 6
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0
+  happinessChangeRate: 0
   healthChangeRate: -3
+  isCritical: 0
+  isDead: 0

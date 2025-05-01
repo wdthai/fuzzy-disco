@@ -72,6 +72,7 @@ public class MenuManager : MonoBehaviour
         DataPanel.Instance.ClosePanel();
         SkillsPanel.Instance.ClosePanel();
         GameInfoPanel.Instance.gameObject.SetActive(false);
+        ConsolePanel.Instance.Minimise();
         GameManager.Instance.isTabOpen = true;
     }
 

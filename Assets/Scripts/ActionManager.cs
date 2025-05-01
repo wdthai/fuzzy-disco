@@ -86,9 +86,9 @@ public class ActionManager : MonoBehaviour
         return actionSave;
     }
 
-    public ActionData LoadState(ActionSaveData actionSave)
+    public void LoadState(ActionData action, ActionSaveData actionSave)
     {
-        ActionData action = new ActionData();
+        // ActionData action = new ActionData();
         action.actionName = actionSave.actionName;
         action.description = actionSave.description;
         action.isRateChange = actionSave.isRateChange;
@@ -108,6 +108,6 @@ public class ActionManager : MonoBehaviour
         action.ticksToComplete = actionSave.ticksToComplete;
         action.isUnlocked = actionSave.isUnlocked;
 
-        return action;
+        // return action;
     }
 }

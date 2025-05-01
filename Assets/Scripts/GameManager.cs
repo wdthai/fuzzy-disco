@@ -158,12 +158,14 @@ public class GameManager : MonoBehaviour
         SkillManager.Instance.allSkills = new List<SkillData>();
         foreach  (SkillSaveData skillSave in gameSave.skills)
         {
-            SkillData skill = SkillManager.Instance.LoadState(skillSave);
-            if (skill != null)
+            foreach (SkillData skill in SkillManager.Instance.allSkills)
             {
-                SkillManager.Instance.allSkills.Add(skill);
+                if (skill.skillName == skillSave.skillName)
+                {
+                    SkillManager.Instance.LoadState(skill, skillSave);
+                    break;
+                }
             }
-            
         }
 
         Tick();

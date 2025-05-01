@@ -12,7 +12,7 @@ public class RegionRebelliousState : RegionBaseState
 
     public override void Enter(RegionAI regionAI)
     {
-        Debug.Log(regionAI.region.data.regionName +" Entering Rebellious State");
+        // Debug.Log(regionAI.region.data.regionName +" Entering Rebellious State");
         if (regionAI.region.data.tax < newTax) regionAI.region.data.tax = newTax;
         if (regionAI.region.data.compliance < newCompliance) regionAI.region.data.compliance = newCompliance;
     }
