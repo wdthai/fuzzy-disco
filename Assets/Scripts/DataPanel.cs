@@ -78,6 +78,7 @@ public class DataPanel : MonoBehaviour
         Refresh();
         SkillsPanel.Instance.ClosePanel();
         RegionInfoPanel.Instance.ClosePanel();
+        ConsolePanel.Instance.Minimise();
         gameObject.SetActive(true);
         closeButton.gameObject.SetActive(true);
         Debug.Log("Data Panel Opened");

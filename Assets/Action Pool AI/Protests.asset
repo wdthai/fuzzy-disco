@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
   m_Name: Protests
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: Protest Event
   description: 
-  prerequisites: []
   isRateChange: 0
   economyChange: 0
   taxChange: 0

@@ -23,7 +23,7 @@ public class ConsoleManager : MonoBehaviour
         if (logQueue.Count > maxEntries)
             logQueue.Dequeue();
 
-        latestText.text = entry;
+        latestText.text = $"Breaking News: {entry}";
         ConsolePanel.Instance.Refresh();
     }
 

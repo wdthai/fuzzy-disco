@@ -78,6 +78,7 @@ public class SkillsPanel : MonoBehaviour
         Refresh();
         DataPanel.Instance.ClosePanel();
         RegionInfoPanel.Instance.ClosePanel();
+        ConsolePanel.Instance.Minimise();
         gameObject.SetActive(true);
         closeButton.gameObject.SetActive(true);
         Debug.Log("Skills Panel Opened");
