@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Region : MonoBehaviour
 {
+    public RegionData original;
     public RegionData data;
     public RegionAI ai;
 
-    void Awake() { ai = GetComponent<RegionAI>();  }
-    void Start() { ai.region = this; }
+    void Awake()
+    {
+        ai = GetComponent<RegionAI>();
+        data = Instantiate(original);
+    }
+    void Start() { ai.region = this;  }
 
     private void OnMouseDown()
     {
@@ -30,12 +35,12 @@ public class Region : MonoBehaviour
         //     return;
         // }
 
-        data.economy += data.economyChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
-        data.tax += data.economyChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
-        data.education += data.educationChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
-        data.stability += data.stabilityChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
-        data.compliance += data.complianceChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
-        data.happiness += data.happinessChangeRate * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.economy += (data.economyChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.tax += (data.economyChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.education += (data.educationChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.stability += (data.stabilityChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.compliance += (data.complianceChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
+        data.happiness += (data.happinessChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
         data.health += (data.healthChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
 
         // Clamp values to 0-100 range

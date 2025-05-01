@@ -8,14 +8,12 @@ public class StartMenuManager : MonoBehaviour
 {
     public Button NewGameButton;
     public Button LoadButton;
-    public Button HelpButton;
     public Button QuitButton;
 
     void Start()
     {
         NewGameButton.onClick.AddListener(NewGame);
         LoadButton.onClick.AddListener(LoadGame);
-        HelpButton.onClick.AddListener(ShowHelp);
         QuitButton.onClick.AddListener(QuitGame);
     }
     public void NewGame()
@@ -30,12 +28,6 @@ public class StartMenuManager : MonoBehaviour
         Time.timeScale = 1f;
         SaveManager.isNewGame = false;
         SceneManager.LoadScene("Game");
-    }
-
-    public void ShowHelp()
-    {
-        // Show help menu or instructions
-        Debug.Log("Help button clicked. Show help menu.");
     }
 
     public void QuitGame()

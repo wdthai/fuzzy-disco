@@ -7,11 +7,22 @@ public class SkillManager : MonoBehaviour
 
     public static SkillManager Instance;
 
-    public List<SkillData> allSkills; // Assign in Inspector
+    // public List<SkillData> originalSkills; // Assign in Inspector
+    public List<SkillData> allSkills;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
+        // foreach (SkillData skill in originalSkills)
+        // {
+        //     SkillData newSkill = ScriptableObject.Instantiate(skill);
+        //     allSkills.Add(newSkill);
+        // }
+    }
+
+    void Start()
+    {
+        
     }
 
     public bool isUnlockable(SkillData skill)
@@ -47,7 +58,7 @@ public class SkillManager : MonoBehaviour
         GameManager.Instance.policyCostMultiplier += skill.policyCostModifier;
     }
 
-    public SkillSaveData SaveState(SkillData skill)
+    public SkillSaveData SaveState(SkillData skill, bool isNewGame = false)
     {
         SkillSaveData skillSave = new SkillSaveData();
         skillSave.skillName = skill.skillName;
@@ -64,7 +75,7 @@ public class SkillManager : MonoBehaviour
         skillSave.finalResearchCost = skill.finalResearchCost;
         skillSave.finalMoneyCost = skill.finalMoneyCost;
         skillSave.ticksToComplete = skill.ticksToComplete;
-        skillSave.isUnlocked = skill.isUnlocked;
+        skillSave.isUnlocked = isNewGame ? false : skill.isUnlocked;
 
         return skillSave;
     }

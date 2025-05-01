@@ -7,8 +7,6 @@ public class ActionData : ScriptableObject
 {
     public string actionName;
     public string description;
-    // public List<RegionData> targetRegions;
-    public ActionData[] prerequisites; 
     public bool isRateChange = false; // true affects ChangeRate, false affects direct values
 
     [Range(-100, 100)] public float economyChange; // affects local economy change rate

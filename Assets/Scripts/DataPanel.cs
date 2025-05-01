@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DataPanel : MonoBehaviour
 {
-
+    // show all region data stats, not actions
     public static DataPanel Instance;
     // Start is called before the first frame update
     public GameObject regionDataPrefab;  // Assign the prefab in the Inspector
@@ -43,12 +43,27 @@ public class DataPanel : MonoBehaviour
             TextMeshProUGUI[] textFields = regionUI.GetComponentsInChildren<TextMeshProUGUI>();
 
             // Set data
-            textFields[0].text = $"{region.data.regionName}";
-            textFields[1].text = $"Wealth: {region.data.economy.ToString("F2")}%";
-            textFields[2].text = $"Education: {region.data.education.ToString("F2")}%";
-            textFields[3].text = $"Stability: {region.data.stability.ToString("F2")}%";
-            textFields[4].text = $"Compliance: {region.data.compliance.ToString("F2")}%";
-            textFields[5].text = $"Health: {region.data.health.ToString("F2")}%";
+            textFields[0].text = $"{region.data.regionName}\n{region.data.challengeName}";
+
+            string coreStats = "";
+            coreStats += $"Economy: {region.data.economy.ToString("F2")}%\n";
+            coreStats += $"Tax: {region.data.tax.ToString("F2")}%\n";
+            coreStats += $"Education: {region.data.education.ToString("F2")}%\n";
+            coreStats += $"Stability: {region.data.stability.ToString("F2")}%\n";
+            coreStats += $"Compliance: {region.data.compliance.ToString("F2")}%\n";
+            coreStats += $"Happiness: {region.data.happiness.ToString("F2")}%\n";
+            coreStats += $"Health: {region.data.health.ToString("F2")}%\n";
+            textFields[2].text = $"{coreStats}";
+
+            string rateChanges = "";
+            rateChanges += $"Economy: {(region.data.economyChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            rateChanges += $"Tax: {(region.data.taxChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            rateChanges += $"Education: {(region.data.educationChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            rateChanges += $"Stability: {(region.data.stabilityChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            rateChanges += $"Compliance: {(region.data.complianceChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            rateChanges += $"Happiness: {(region.data.happinessChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            rateChanges += $"Health: {(region.data.healthChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
+            textFields[4].text = $"{rateChanges}";
         }
     }
 

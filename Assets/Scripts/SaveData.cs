@@ -16,6 +16,33 @@ public class GameSaveData
 
     public List<RegionSaveData> regions;
     public List<SkillSaveData> skills;
+
+    public GameSaveData()
+    {
+        money = 0f;
+        research = 0f;
+        globalHealth = 100f;
+        moneyGenerationMultiplier = 1f;
+        researchGenerationMultiplier = 1f;
+        moneyCostMultiplier = 1f;
+        researchCostMultiplier = 1f;
+        policyCostMultiplier = 1f;
+
+        regions = new List<RegionSaveData>();
+        skills = new List<SkillSaveData>();
+
+        Region[] allRegions = GameObject.FindObjectsOfType<Region>();
+        foreach (Region region in allRegions)
+        {
+            regions.Add(region.SaveState());
+        }
+
+        foreach (SkillData skill in SkillManager.Instance.allSkills)
+        {
+            skills.Add(SkillManager.Instance.SaveState(skill));
+        }
+
+    }
 }
 
 [System.Serializable]
@@ -41,6 +68,7 @@ public class RegionSaveData
     public float healthChangeRate; // affects global health
     public List<ActionSaveData> actions;
     public List<ActionSaveData> actionsAI; // actions that must be completed before this one can be taken
+
 }
 
 [System.Serializable]
@@ -61,7 +89,8 @@ public class SkillSaveData
     public float finalResearchCost; // research points
     public float finalMoneyCost; // money
     public int ticksToComplete;
-    public bool isUnlocked = false; 
+    public bool isUnlocked = false;
+
 }
 
 [System.Serializable]

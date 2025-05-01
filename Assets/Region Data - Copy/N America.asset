@@ -14,14 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: N America
   challengeName: 
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 30a63f6024767a94ba7ae39436cb7a7d, type: 2}
+  actionsAI:
+  - {fileID: 11400000, guid: 756afc680535e1d4aba467af4e3dcef1, type: 2}
+  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
   economy: 70
+  tax: 0
   education: 80
   stability: 90
   compliance: 70
+  happiness: 5
   health: 50
   economyChangeRate: 0
+  taxChangeRate: 0
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0
+  happinessChangeRate: 0
   healthChangeRate: -5
+  isCritical: 0
+  isDead: 0

@@ -5,7 +5,7 @@ using TMPro;
 
 public class ConsolePanel : MonoBehaviour
 {
-
+    // clean UI; maybe time stamp
     public static ConsolePanel Instance;
     // Start is called before the first frame update
     public GameObject ConsoleDataPrefab;  // Assign the prefab in the Inspector
@@ -36,6 +36,7 @@ public class ConsolePanel : MonoBehaviour
         RegionInfoPanel.Instance.ClosePanel();
         DataPanel.Instance.ClosePanel();
         SkillsPanel.Instance.ClosePanel();
+        Refresh();
     }
     public void Minimise()
     {

@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Africa
   challengeName: 
-  actions: []
-  actionsAI: []
+  actions:
+  - {fileID: 11400000, guid: e59d6dfc76819b94d83fc56555563df0, type: 2}
+  actionsAI:
+  - {fileID: 11400000, guid: 756afc680535e1d4aba467af4e3dcef1, type: 2}
+  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
   economy: 30
   tax: 0
   education: 50
   stability: 30
   compliance: 40
-  happiness: 0
+  happiness: 5
   health: 40
   economyChangeRate: 0
   taxChangeRate: 0

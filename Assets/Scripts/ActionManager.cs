@@ -17,12 +17,6 @@ public class ActionManager : MonoBehaviour
         if (GameManager.Instance.research < (action.baseResearchCost * GameManager.Instance.researchCostMultiplier)) return false;
         if (GameManager.Instance.money < (action.baseMoneyCost * GameManager.Instance.moneyCostMultiplier)) return false;
 
-        // Check prerequisites
-        // foreach (ActionData pre in action.prerequisites)
-        // {
-        //     if (!pre.isUnlocked) return false;
-        // }
-
         return true;
     }
 
@@ -88,7 +82,6 @@ public class ActionManager : MonoBehaviour
 
     public void LoadState(ActionData action, ActionSaveData actionSave)
     {
-        // ActionData action = new ActionData();
         action.actionName = actionSave.actionName;
         action.description = actionSave.description;
         action.isRateChange = actionSave.isRateChange;
@@ -107,7 +100,5 @@ public class ActionManager : MonoBehaviour
         action.finalMoneyCost = action.finalMoneyCost;
         action.ticksToComplete = actionSave.ticksToComplete;
         action.isUnlocked = actionSave.isUnlocked;
-
-        // return action;
     }
 }

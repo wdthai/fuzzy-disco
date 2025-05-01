@@ -14,14 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Asia
   challengeName: 
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 013fca96bdb392840acc91d3120b90c3, type: 2}
+  actionsAI:
+  - {fileID: 11400000, guid: 756afc680535e1d4aba467af4e3dcef1, type: 2}
+  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
   economy: 50
+  tax: 0
   education: 70
   stability: 40
   compliance: 50
+  happiness: 5
   health: 45
   economyChangeRate: 0
+  taxChangeRate: 0
   educationChangeRate: 0
   stabilityChangeRate: 0
   complianceChangeRate: 0
+  happinessChangeRate: 0
   healthChangeRate: -8
+  isCritical: 0
+  isDead: 0

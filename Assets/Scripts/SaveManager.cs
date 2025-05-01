@@ -6,7 +6,7 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
-    public static bool isNewGame = false;
+    public static bool isNewGame = true;
     void Awake()
     {
         if (Instance == null)

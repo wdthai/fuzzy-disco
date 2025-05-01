@@ -29,23 +29,16 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        if (!SaveManager.isNewGame)
+        if (SaveManager.isNewGame)
         {
             allRegions = new List<Region>(FindObjectsOfType<Region>());
-            GameSaveData gameSave = SaveManager.Load();
+            GameSaveData gameSave = new GameSaveData();
             LoadState(gameSave);
         }
         else
         {
-            money = 0;
-            research = 0;
-            globalHealth = 100f;
-            moneyGenerationMultiplier = 1f;
-            researchGenerationMultiplier = 1f;
-            moneyCostMultiplier = 1f;
-            researchCostMultiplier = 1f;
-            policyCostMultiplier = 1f;
-            allRegions = new List<Region>(FindObjectsOfType<Region>());
+            GameSaveData gameSave = SaveManager.Load();
+            LoadState(gameSave);
         }
 
         StartCoroutine(Tick());
@@ -67,6 +60,7 @@ public class GameManager : MonoBehaviour
             OnTick();
 
             GameInfoPanel.Instance.Refresh(Instance);
+            
             DataPanel.Instance.Refresh();
             SkillsPanel.Instance.Refresh();
             yield return new WaitForSeconds(2f);
@@ -155,7 +149,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        SkillManager.Instance.allSkills = new List<SkillData>();
+        // SkillManager.Instance.allSkills = new List<SkillData>();
         foreach  (SkillSaveData skillSave in gameSave.skills)
         {
             foreach (SkillData skill in SkillManager.Instance.allSkills)
