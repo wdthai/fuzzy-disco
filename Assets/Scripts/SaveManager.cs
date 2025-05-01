@@ -43,7 +43,7 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No save file found. Creating new save data.");
+            Debug.Log("No save file found. Creating new save data.");
             return new GameSaveData(); // Return fresh data if no file
         }
     }

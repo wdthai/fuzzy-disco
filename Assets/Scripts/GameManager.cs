@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            allRegions = new List<Region>(FindObjectsOfType<Region>());
             GameSaveData gameSave = SaveManager.Load();
             LoadState(gameSave);
         }
