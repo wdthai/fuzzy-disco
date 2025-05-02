@@ -8,7 +8,7 @@ public class ConsoleManager : MonoBehaviour
     public static ConsoleManager Instance;
     public GameObject fullPanel; 
     public Queue<string> logQueue = new Queue<string>();
-    public int maxEntries = 10;
+    public int maxEntries = 25;
     public TextMeshProUGUI latestText;
 
     void Awake()
@@ -23,7 +23,7 @@ public class ConsoleManager : MonoBehaviour
         if (logQueue.Count > maxEntries)
             logQueue.Dequeue();
 
-        latestText.text = $"Breaking News: {entry}";
+        latestText.text = $"{entry}";
         ConsolePanel.Instance.Refresh();
     }
 

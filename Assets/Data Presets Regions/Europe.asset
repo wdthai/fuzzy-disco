@@ -14,24 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Europe
   challengeName: 
-  actions:
-  - {fileID: 11400000, guid: 30a63f6024767a94ba7ae39436cb7a7d, type: 2}
-  actionsAI:
-  - {fileID: 11400000, guid: 756afc680535e1d4aba467af4e3dcef1, type: 2}
-  - {fileID: 11400000, guid: 7f144dec9880137419e07d0a85874306, type: 2}
-  economy: 80
-  tax: 0
-  education: 90
+  actionsOriginal:
+  - {fileID: 11400000, guid: 3a83ac1c627d1be4eb3c4434b771cd76, type: 2}
+  - {fileID: 11400000, guid: 3274a1cb1928ef645bc6d973c9327db6, type: 2}
+  - {fileID: 11400000, guid: 26360c35488770740b96abb849454d5f, type: 2}
+  - {fileID: 11400000, guid: 29d47319c9b2da344861d85e6d224087, type: 2}
+  actionsAIOriginal:
+  - {fileID: 11400000, guid: 3a2a479c057bc0143b8c2c14c1fa5995, type: 2}
+  - {fileID: 11400000, guid: 119846a4ce6e1574a91c5aaf6d36da77, type: 2}
+  - {fileID: 11400000, guid: a56e5c1b655de064c8b78cbe690f38e4, type: 2}
+  - {fileID: 11400000, guid: 26f1afdd5532f134283c35c0fef02dcb, type: 2}
+  - {fileID: 11400000, guid: e4a1a94bca65a8043962c9e015b4bb0c, type: 2}
+  - {fileID: 11400000, guid: d7f715571f95c1249ba47fd31816ed58, type: 2}
+  - {fileID: 11400000, guid: f8984fa8af068b1428beb3a2a56f0211, type: 2}
+  - {fileID: 11400000, guid: 22734d9ae9f703a41b85b72f83278250, type: 2}
+  - {fileID: 11400000, guid: 89996f16b861f5840a1c06f19ccb787c, type: 2}
+  - {fileID: 11400000, guid: 1600c15be71df284a98ce19ebf40115f, type: 2}
+  - {fileID: 11400000, guid: fbeb2b58d7857f44897c4328d2c31417, type: 2}
+  actions: []
+  actionsAI: []
+  economy: 65
+  tax: 65
+  education: 70
   stability: 70
-  compliance: 70
-  happiness: 5
+  compliance: 60
+  happiness: 60
   health: 60
-  economyChangeRate: 0
-  taxChangeRate: 0
-  educationChangeRate: 0
+  economyChangeRate: 1
+  taxChangeRate: 2
+  educationChangeRate: 1
   stabilityChangeRate: 0
-  complianceChangeRate: 0
-  happinessChangeRate: 0
+  complianceChangeRate: -1
+  happinessChangeRate: -1
   healthChangeRate: -2
   isCritical: 0
   isDead: 0

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7cfe552baf8cac49a383e414fa0c294, type: 3}
+  m_Name: Global Collaboration Conference
+  m_EditorClassIdentifier: 
+  skillName: Global Collaboration Conference
+  description: Minor improvements to Money and Research outputs
+  moneyGenerationModifier: 0.05
+  researchGenerationModifier: 0.05
+  moneyCostModifier: 0
+  researchCostModifier: 0
+  policyCostModifier: 0
+  baseResearchCost: 150
+  baseMoneyCost: 1500
+  finalResearchCost: 135
+  finalMoneyCost: 1350
+  ticksToComplete: 0
+  isUnlocked: 0

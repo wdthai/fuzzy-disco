@@ -46,13 +46,13 @@ public class DataPanel : MonoBehaviour
             textFields[0].text = $"{region.data.regionName}\n{region.data.challengeName}";
 
             string coreStats = "";
-            coreStats += $"Economy: {region.data.economy.ToString("F2")}%\n";
-            coreStats += $"Tax: {region.data.tax.ToString("F2")}%\n";
-            coreStats += $"Education: {region.data.education.ToString("F2")}%\n";
-            coreStats += $"Stability: {region.data.stability.ToString("F2")}%\n";
-            coreStats += $"Compliance: {region.data.compliance.ToString("F2")}%\n";
-            coreStats += $"Happiness: {region.data.happiness.ToString("F2")}%\n";
-            coreStats += $"Health: {region.data.health.ToString("F2")}%\n";
+            coreStats += $"Economy: {region.data.economy.ToString("F2")}\n";
+            coreStats += $"Tax: {region.data.tax.ToString("F2")}\n";
+            coreStats += $"Education: {region.data.education.ToString("F2")}\n";
+            coreStats += $"Stability: {region.data.stability.ToString("F2")}\n";
+            coreStats += $"Compliance: {region.data.compliance.ToString("F2")}\n";
+            coreStats += $"Happiness: {region.data.happiness.ToString("F2")}\n";
+            coreStats += $"Health: {region.data.health.ToString("F2")}\n";
             textFields[2].text = $"{coreStats}";
 
             string rateChanges = "";
@@ -64,6 +64,8 @@ public class DataPanel : MonoBehaviour
             rateChanges += $"Happiness: {(region.data.happinessChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
             rateChanges += $"Health: {(region.data.healthChangeRate/10f).ToString("+#0.00;-#0.00;0.00")}\n";
             textFields[4].text = $"{rateChanges}";
+
+            textFields[5].text = $"{region.ai.currentState}";
         }
     }
 

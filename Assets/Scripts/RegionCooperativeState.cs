@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class RegionCooperativeState : RegionBaseState
 {
-    public float newTax = 80f;
-    public float newCompliance = 80f;
-    public float eventSeverity= 0.2f;
-    public float aggression = 0.05f;
+    public float taxDifference = 25f;
+    public float complianceDifference = 25f;
+    public float aggression = 0.025f;
     public ActionData nextAction;
     public override void Enter(RegionAI regionAI)
     {
-        // Debug.Log(regionAI.region.data.regionName +" Entering Cooperative State");
-
-        if (regionAI.region.data.tax < newTax) regionAI.region.data.tax = newTax;
-        if (regionAI.region.data.compliance < newCompliance) regionAI.region.data.compliance = newCompliance;
+        ConsoleManager.Instance.AddEntry($"{regionAI.region.data.regionName} has become Cooperative");
     }
     public override void Tick(RegionAI regionAI)
     {
-        if (regionAI.region.data.happiness < 80)
+        if (regionAI.region.data.happiness < 55)
         {
+            regionAI.region.data.tax -= taxDifference;
+            regionAI.region.data.compliance -= complianceDifference;
             regionAI.ChangeState(regionAI.contentState);
             return;
         }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
+  m_Name: Subsidize Green Startups
+  m_EditorClassIdentifier: 
+  actionName: Fund Green Startups
+  description: Fund entrepreneurs innovating in clean energy and eco-friendly tech
+  isRateChange: 1
+  economyChange: 10
+  taxChange: 0
+  educationChange: 5
+  stabilityChange: 0
+  complianceChange: 5
+  happinessChange: 0
+  healthChange: 5
+  baseResearchCost: 500
+  baseMoneyCost: 1250
+  finalResearchCost: 500
+  finalMoneyCost: 1250
+  ticksToComplete: 0
+  isUnlocked: 0

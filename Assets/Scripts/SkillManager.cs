@@ -7,17 +7,17 @@ public class SkillManager : MonoBehaviour
 
     public static SkillManager Instance;
 
-    // public List<SkillData> originalSkills; // Assign in Inspector
+    public List<SkillData> originalSkills; // Assign in Inspector
     public List<SkillData> allSkills;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
-        // foreach (SkillData skill in originalSkills)
-        // {
-        //     SkillData newSkill = ScriptableObject.Instantiate(skill);
-        //     allSkills.Add(newSkill);
-        // }
+        foreach (SkillData skill in originalSkills)
+        {
+            SkillData newSkill = ScriptableObject.Instantiate(skill);
+            allSkills.Add(newSkill);
+        }
     }
 
     void Start()

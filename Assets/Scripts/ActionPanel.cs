@@ -20,6 +20,8 @@ public class ActionPanel : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        
+        if (region.isDead) return;
 
         foreach (ActionData action in region.actions)
         {
@@ -31,8 +33,8 @@ public class ActionPanel : MonoBehaviour
             action.finalResearchCost = (action.baseResearchCost * GameManager.Instance.researchCostMultiplier);
 
             string statChanges = "";
-            if (action.isRateChange) statChanges += "Rate Changes (per tick):\n";
-            else statChanges += "Direct Changes:\n";
+            statChanges += action.isRateChange ? "Rate Changes (per tick):\n" : "Direct Changes:\n";
+
             if (action.economyChange != 0) statChanges += $"Economy: {action.economyChange.ToString("+#;-#;0")}\n";
             if (action.taxChange != 0) statChanges += $"Tax: {action.taxChange.ToString("+#;-#;0")}\n";
             if (action.educationChange != 0) statChanges += $"Education: {action.educationChange.ToString("+#;-#;0")}\n";

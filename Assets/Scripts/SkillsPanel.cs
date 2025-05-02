@@ -60,7 +60,7 @@ public class SkillsPanel : MonoBehaviour
             button.onClick.AddListener(() => SkillManager.Instance.UnlockSkill(skill));
             // Set data
             textFields[0].text = $"{skill.skillName}";
-            textFields[1].text = $"Desc: {skill.description}";
+            textFields[1].text = $"{skill.description}";
             textFields[2].text = $"Money: {skill.finalMoneyCost.ToString("F0")}";
             textFields[3].text = $"Research: {skill.finalResearchCost.ToString("F0")}";
         }

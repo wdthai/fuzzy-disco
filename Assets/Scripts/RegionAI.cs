@@ -6,7 +6,7 @@ public class RegionAI : MonoBehaviour
 {
     // context = this
 
-    RegionBaseState currentState;
+    public RegionBaseState currentState;
     public RegionCooperativeState cooperativeState = new RegionCooperativeState();
     public RegionContentState contentState = new RegionContentState();
     public RegionResistantState resistantState = new RegionResistantState();
@@ -18,21 +18,21 @@ public class RegionAI : MonoBehaviour
 
     public Region region;
 
-    public float stateCheckCooldown = 10f; // 2 seconds = 1 tick
+    public float stateCheckCooldown = 30f; // 2 seconds = 1 tick
     public float stateCheckTimer;
 
 // state patterns
     // region state based on region happiness
     // and also how aggressively pursue own interests; higher chance every tick
-    // every 20 tick, decide on goal/action using utility
-    // reduce compliance of user actions
-    // stability affect frequency of random events, regions state affect severity of events
+    // every set no. tick, decide on goal/action using utility
+    // move down: reduce compliance of user actions, move up: increase
+    // regions state affect frequency of random events,
 
     void Start()
     {
         currentState = contentState;
         currentState.Enter(this);
-        stateCheckTimer = stateCheckCooldown;
+        stateCheckTimer = Random.Range(0f, stateCheckCooldown);
     }
 
     void Update()

@@ -8,6 +8,7 @@ public class GameSaveData
     public float money;
     public float research;
     public float globalHealth;
+    public float tickCount;
     public float moneyGenerationMultiplier; // baseRate * multiplier
     public float researchGenerationMultiplier;
     public float moneyCostMultiplier; // baseCost * reduction
@@ -22,6 +23,7 @@ public class GameSaveData
         money = 0f;
         research = 0f;
         globalHealth = 100f;
+        tickCount = 0f;
         moneyGenerationMultiplier = 1f;
         researchGenerationMultiplier = 1f;
         moneyCostMultiplier = 1f;

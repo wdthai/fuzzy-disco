@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class RegionRebelliousState : RegionBaseState
 {
-    public float newTax = 20f;
-    public float newCompliance = 20f;
-    public float eventSeverity = 1.2f;
-    public float aggression = 0.3f;
+    public float taxDifference = 10f;
+    public float complianceDifference = 10f;
+    public float aggression = 0.225f;
     public ActionData nextAction;
 
     public override void Enter(RegionAI regionAI)
     {
-        // Debug.Log(regionAI.region.data.regionName +" Entering Rebellious State");
-        if (regionAI.region.data.tax < newTax) regionAI.region.data.tax = newTax;
-        if (regionAI.region.data.compliance < newCompliance) regionAI.region.data.compliance = newCompliance;
+        ConsoleManager.Instance.AddEntry($"{regionAI.region.data.regionName} has become Rebellious");
     }
     public override void Tick(RegionAI regionAI)
     {
-        if (regionAI.region.data.happiness >= 25)
+        if (regionAI.region.data.happiness >= 15)
         {
+            regionAI.region.data.tax += taxDifference;
+            regionAI.region.data.compliance += complianceDifference;
             regionAI.ChangeState(regionAI.resistantState);
             return;
         }

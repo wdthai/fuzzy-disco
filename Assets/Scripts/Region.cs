@@ -12,6 +12,16 @@ public class Region : MonoBehaviour
     {
         ai = GetComponent<RegionAI>();
         data = Instantiate(original);
+        foreach (ActionData action in data.actionsOriginal)
+        {
+            ActionData newAction = ScriptableObject.Instantiate(action);
+            data.actions.Add(newAction);
+        }
+        foreach (ActionData action in data.actionsAIOriginal)
+        {
+            ActionData newAction = ScriptableObject.Instantiate(action);
+            data.actionsAI.Add(newAction);
+        }
     }
     void Start() { ai.region = this;  }
 
@@ -24,17 +34,32 @@ public class Region : MonoBehaviour
         RegionInfoPanel.Instance.OpenPanel(data);
     }
 
+    public void killRegion(){
+        if (data.isDead) return;
+
+        data.isDead = true;
+
+        data.economyChangeRate = -50;
+        data.taxChangeRate = -50;
+        data.educationChangeRate = -50;
+        data.stabilityChangeRate = -50;
+        data.complianceChangeRate = -50;
+        data.happinessChangeRate = -50;
+        data.healthChangeRate = -50;
+    }
+
     public void Refresh()
     {
-        // if (data.health <= 5){
-        //     Debug.Log("Region " + data.regionName + " is in critical condition.");
-        //     data.isCritical = true;
-        // }
-        // if (data.health <= 0){
-        //     data.isDead = true;
-        //     return;
-        // }
+        if (data.health <= 0){
+            killRegion();
+            return;
+        }
 
+        if (data.health <= 5){
+            Debug.Log("Region " + data.regionName + " is in critical condition.");
+            data.isCritical = true;
+        }
+    
         data.economy += (data.economyChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
         data.tax += (data.economyChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
         data.education += (data.educationChangeRate / 10f) * Random.Range(1f - (100-data.stability) / 100f, 1f + (100-data.stability) / 100f);
@@ -51,6 +76,14 @@ public class Region : MonoBehaviour
         data.compliance = Mathf.Clamp(data.compliance, 0, 100);
         data.happiness = Mathf.Clamp(data.happiness, 0, 100);
         data.health = Mathf.Clamp(data.health, 0, 100);
+
+        data.economyChangeRate = Mathf.Clamp(data.economyChangeRate, -50, 50);
+        data.taxChangeRate = Mathf.Clamp(data.taxChangeRate, -50, 50);
+        data.educationChangeRate = Mathf.Clamp(data.educationChangeRate, -50, 50);
+        data.stabilityChangeRate = Mathf.Clamp(data.stabilityChangeRate, -50, 50);
+        data.complianceChangeRate = Mathf.Clamp(data.complianceChangeRate, -50, 50);
+        data.happinessChangeRate = Mathf.Clamp(data.happinessChangeRate, -50, 50);
+        data.healthChangeRate = Mathf.Clamp(data.healthChangeRate, -50, 50);
     }
 
     public RegionSaveData SaveState()

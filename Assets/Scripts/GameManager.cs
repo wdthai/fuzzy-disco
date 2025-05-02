@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public float money = 0;
     public float research = 0;
     public float globalHealth = 100;
+    public float tickCount = 0f;
+    public float daysUntilWin = 25f;
     
     public float moneyGenerationMultiplier = 1f; // baseRate * multiplier
     public float researchGenerationMultiplier = 1f;
@@ -42,10 +44,10 @@ public class GameManager : MonoBehaviour
             LoadState(gameSave);
         }
 
-        StartCoroutine(Tick());
+        StartCoroutine(OnTick());
     }   
 
-    IEnumerator Tick()
+    IEnumerator OnTick()
     {
         yield return new WaitUntil(() => 
             DataPanel.Instance != null 
@@ -58,18 +60,22 @@ public class GameManager : MonoBehaviour
                 region.Refresh();
             }
 
-            OnTick();
+            Tick();
+            CheckWin();
 
             GameInfoPanel.Instance.Refresh(Instance);
-            
             DataPanel.Instance.Refresh();
             SkillsPanel.Instance.Refresh();
+
+            
+
             yield return new WaitForSeconds(2f);
         }
     }
 
-    public void OnTick()
+    public void Tick()
     {
+        
         float moneyIncome = 0;
         float researchIncome = 0;
         globalHealth = 0f;
@@ -98,12 +104,33 @@ public class GameManager : MonoBehaviour
         research += researchIncome * researchGenerationMultiplier;
     }
 
+    public void CheckWin()
+    {
+        tickCount += 1f;
+        if (globalHealth >= 50)
+        {
+            daysUntilWin -= 1f;
+            ConsoleManager.Instance.AddEntry($"Day {tickCount}: {25f - daysUntilWin} consecutive days above 50% global health.");
+            if (daysUntilWin <= 0)
+            {
+                Time.timeScale = 0f; // stop the game
+                ConsoleManager.Instance.AddEntry("Breaking News: The planet is saved!");
+            }
+        }
+        else 
+        {
+            daysUntilWin = 25f;
+            ConsoleManager.Instance.AddEntry($"Day {tickCount}");
+        }
+    }
+
     public GameSaveData SaveState()
     {
         GameSaveData gameSave = new GameSaveData();
         gameSave.money = money;
         gameSave.research = research; 
         gameSave.globalHealth = globalHealth;
+        gameSave.tickCount = tickCount;
 
         gameSave.moneyGenerationMultiplier = moneyGenerationMultiplier;
         gameSave.researchGenerationMultiplier = researchGenerationMultiplier;
@@ -131,6 +158,7 @@ public class GameManager : MonoBehaviour
         money = gameSave.money;
         research = gameSave.research;
         globalHealth = gameSave.globalHealth;
+        tickCount = gameSave.tickCount;
 
         moneyGenerationMultiplier = gameSave.moneyGenerationMultiplier;
         researchGenerationMultiplier = gameSave.researchGenerationMultiplier;

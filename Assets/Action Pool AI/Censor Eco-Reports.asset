@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
+  m_Name: Censor Eco-Reports
+  m_EditorClassIdentifier: 
+  actionName: Censorship of Eco-Reports
+  description: 
+  isRateChange: 0
+  economyChange: 0
+  taxChange: 0
+  educationChange: 0
+  stabilityChange: -20
+  complianceChange: -10
+  happinessChange: -15
+  healthChange: 0
+  baseResearchCost: 0
+  baseMoneyCost: 0
+  finalResearchCost: 0
+  finalMoneyCost: 0
+  ticksToComplete: 0
+  isUnlocked: 0

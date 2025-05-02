@@ -51,6 +51,7 @@ public class ActionManager : MonoBehaviour
             region.health += action.healthChange * region.compliance / 100f;
         }
 
+        ConsoleManager.Instance.AddEntry($"Breaking News: {action.actionName} enforced in {region.regionName}."); // reword
         RegionInfoPanel.Instance.Refresh(region);
         GameInfoPanel.Instance.Refresh(GameManager.Instance);
     }
