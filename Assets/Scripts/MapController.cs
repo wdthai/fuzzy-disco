@@ -11,8 +11,6 @@ public class MapController : MonoBehaviour
     public float newSize;
     public Camera cam;
     public Vector3 dragOrigin;
-
-    // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.isTabOpen)

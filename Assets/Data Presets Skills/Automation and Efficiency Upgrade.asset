@@ -15,9 +15,9 @@ MonoBehaviour:
   skillName: Automation and Efficiency Upgrade
   description: Improves Research output and Research costs for actions.
   moneyGenerationModifier: 0
-  researchGenerationModifier: 0.15
+  researchGenerationModifier: 0.1
   moneyCostModifier: 0
-  researchCostModifier: -0.15
+  researchCostModifier: -0.1
   policyCostModifier: 0
   baseResearchCost: 400
   baseMoneyCost: 3000

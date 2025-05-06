@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float policyCostMultiplier = 1f;
 
     public bool isTabOpen = false;
-    public List<Region> allRegions;
+    public List<Region> Regions;
 
     private void Awake()
     {
@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
     {
         if (SaveManager.isNewGame)
         {
-            allRegions = new List<Region>(FindObjectsOfType<Region>());
+            Regions = new List<Region>(FindObjectsOfType<Region>());
             GameSaveData gameSave = new GameSaveData();
             LoadState(gameSave);
         }
         else
         {
-            allRegions = new List<Region>(FindObjectsOfType<Region>());
+            Regions = new List<Region>(FindObjectsOfType<Region>());
             GameSaveData gameSave = SaveManager.Load();
             LoadState(gameSave);
         }
@@ -51,23 +51,22 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitUntil(() => 
             DataPanel.Instance != null 
-            && SkillsPanel.Instance != null);
+            && SkillsPanel.Instance != null 
+            && GameInfoPanel.Instance != null);
         
         while (Instance != null)
         {
-            foreach (Region region in allRegions)
-            {
+            ConsoleManager.Instance.AddEntry($"Day {tickCount}");
+            foreach (Region region in Regions)
                 region.Refresh();
-            }
 
             Tick();
             CheckWin();
+            CheckLose();
 
             GameInfoPanel.Instance.Refresh(Instance);
             DataPanel.Instance.Refresh();
             SkillsPanel.Instance.Refresh();
-
-            
 
             yield return new WaitForSeconds(2f);
         }
@@ -75,52 +74,68 @@ public class GameManager : MonoBehaviour
 
     public void Tick()
     {
-        
+        // Debug.Log($"[TICK] Global health: {globalHealth} Money: {money}  Research: {research}"); // Requirement 1
         float moneyIncome = 0;
         float researchIncome = 0;
         globalHealth = 0f;
-        foreach (Region region in allRegions)
+        foreach (Region region in Regions)
         {
             moneyIncome += 
             (
                 region.data.economy 
                 * (region.data.tax / 100f)
-                * (Random.Range(100f - (100-region.data.stability), 100f + (100-region.data.stability)) / 100f)
+                * (Random.Range(100f - region.data.stability, 100f + region.data.stability) /100f)
             );
             researchIncome += 
             (
                 region.data.education
-                * (Random.Range(1f - (100-region.data.stability) / 100f, 1f + (100-region.data.stability) / 100f))
+                * (Random.Range(100f - region.data.stability, 100f + region.data.stability) /100f)
             ); 
 
             globalHealth += region.data.health;
         }
 
-        moneyIncome /= allRegions.Count;
-        researchIncome /= allRegions.Count;
-        globalHealth /= allRegions.Count;
+        moneyIncome /= Regions.Count;
+        researchIncome /= Regions.Count;
+        globalHealth /= Regions.Count;
 
+        // Debug.Log($"Base moneyIncome: {moneyIncome} moneyGenerationMultiplier: {moneyGenerationMultiplier}\nMoney Income: {moneyIncome * moneyGenerationMultiplier}");
+        // Debug.Log($"Base researchIncome: {researchIncome} researchGenerationMultiplier: {researchGenerationMultiplier}\nResearch Income: {researchIncome * researchGenerationMultiplier}");
+        // Debug.Log($"Tick {tickCount} Money: {money} Research: {research} moneyIncome: {moneyIncome} researchIncome: {researchIncome}");
+        // Debug.Log($"Global health: {globalHealth}");
         money += moneyIncome * moneyGenerationMultiplier;
         research += researchIncome * researchGenerationMultiplier;
+        Debug.Log($"Tick {tickCount} Money: {money} Research: {research}");
     }
 
     public void CheckWin()
     {
         tickCount += 1f;
-        if (globalHealth >= 50)
+        if (globalHealth >= 100)
         {
             daysUntilWin -= 1f;
-            ConsoleManager.Instance.AddEntry($"Day {tickCount}: {25f - daysUntilWin} consecutive days above 50% global health.");
+            ConsoleManager.Instance.AddEntry($"Day {tickCount}: {25f - daysUntilWin} consecutive days above 100% global health.");
+            Debug.Log($"Day {tickCount}: {25f - daysUntilWin} consecutive days above 100% global health.");
             if (daysUntilWin <= 0)
             {
                 Time.timeScale = 0f; // stop the game
+                Debug.Log($"Win condition met: {25f - daysUntilWin} consecutive days above 100% global health. {tickCount} days played.");
                 ConsoleManager.Instance.AddEntry("Breaking News: The planet is saved!");
             }
         }
         else 
         {
             daysUntilWin = 25f;
-            ConsoleManager.Instance.AddEntry($"Day {tickCount}");
+        }
+    }
+
+    public void CheckLose()
+    {
+        if (globalHealth <= 0)
+        {
+            Time.timeScale = 0f; // stop the game
+            Debug.Log($"Lose condition met: Global health is 0%. {tickCount} days played.");
+            ConsoleManager.Instance.AddEntry("Breaking News: The planet is dead!");
         }
     }
 
@@ -131,6 +146,7 @@ public class GameManager : MonoBehaviour
         gameSave.research = research; 
         gameSave.globalHealth = globalHealth;
         gameSave.tickCount = tickCount;
+        gameSave.daysUntilWin = daysUntilWin;
 
         gameSave.moneyGenerationMultiplier = moneyGenerationMultiplier;
         gameSave.researchGenerationMultiplier = researchGenerationMultiplier;
@@ -139,7 +155,7 @@ public class GameManager : MonoBehaviour
         gameSave.policyCostMultiplier = policyCostMultiplier;
 
         gameSave.regions = new List<RegionSaveData>();
-        foreach (Region region in allRegions)
+        foreach (Region region in Regions)
         {
             gameSave.regions.Add(region.SaveState());
         }
@@ -159,6 +175,7 @@ public class GameManager : MonoBehaviour
         research = gameSave.research;
         globalHealth = gameSave.globalHealth;
         tickCount = gameSave.tickCount;
+        daysUntilWin = gameSave.daysUntilWin;
 
         moneyGenerationMultiplier = gameSave.moneyGenerationMultiplier;
         researchGenerationMultiplier = gameSave.researchGenerationMultiplier;
@@ -168,7 +185,7 @@ public class GameManager : MonoBehaviour
 
         foreach (RegionSaveData regionSave in gameSave.regions)
         {
-            foreach (Region region in allRegions)
+            foreach (Region region in Regions)
             {
                 if (region.data.regionName == regionSave.regionName)
                 {
@@ -178,7 +195,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // SkillManager.Instance.allSkills = new List<SkillData>();
         foreach  (SkillSaveData skillSave in gameSave.skills)
         {
             foreach (SkillData skill in SkillManager.Instance.allSkills)

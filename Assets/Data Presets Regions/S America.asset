@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: S America
   m_EditorClassIdentifier: 
   regionName: S America
-  challengeName: 
+  challengeName: Deforestation
   actionsOriginal:
   - {fileID: 11400000, guid: da6cf1212be70ed43a0d71a264a1f537, type: 2}
   - {fileID: 11400000, guid: ad73a854fe93fe641aedd0c6377d14ca, type: 2}
   - {fileID: 11400000, guid: c0d9bd54df7c04543b66d6652e63a585, type: 2}
   - {fileID: 11400000, guid: 071b32f99f4cead48904e53193051a30, type: 2}
+  - {fileID: 11400000, guid: d1a718ec374818042ad71c6dc25bec5b, type: 2}
+  - {fileID: 11400000, guid: 75067143b0cc2a74d99a215a99b2ab57, type: 2}
   actionsAIOriginal:
   - {fileID: 11400000, guid: 3a2a479c057bc0143b8c2c14c1fa5995, type: 2}
   - {fileID: 11400000, guid: 119846a4ce6e1574a91c5aaf6d36da77, type: 2}

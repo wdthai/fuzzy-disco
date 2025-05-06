@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Green Investment Bonds
   m_EditorClassIdentifier: 
   skillName: Green Investment Bonds
-  description: Improves Money output and Money costs for actions.
-  moneyGenerationModifier: 0.1
+  description: Major improvement to Money output and minor discount for Money costs
+    for actions.
+  moneyGenerationModifier: 0.2
   researchGenerationModifier: 0
   moneyCostModifier: -0.05
   researchCostModifier: 0

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: AI Data Modelling
   m_EditorClassIdentifier: 
   skillName: AI Data Modelling
-  description: Minor improvements to Research output and Research costs for actions.
+  description: Improves Research output and Research costs for actions.
   moneyGenerationModifier: 0
-  researchGenerationModifier: 0.075
+  researchGenerationModifier: 0.1
   moneyCostModifier: 0
-  researchCostModifier: -0.075
+  researchCostModifier: -0.1
   policyCostModifier: 0
   baseResearchCost: 500
   baseMoneyCost: 2000

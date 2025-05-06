@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Carbon Credit System
   m_EditorClassIdentifier: 
   skillName: Carbon Credit System
-  description: Applies minor Money and Research discount for all actions.
+  description: Applies Money and Research discount for all actions.
   moneyGenerationModifier: 0
   researchGenerationModifier: 0
   moneyCostModifier: -0.1

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Global Collaboration Conference
   m_EditorClassIdentifier: 
   skillName: Global Collaboration Conference
-  description: Minor improvements to Money and Research outputs
-  moneyGenerationModifier: 0.05
+  description: Major improvement to Money ouput and minor improvement to Research
+    output
+  moneyGenerationModifier: 0.2
   researchGenerationModifier: 0.05
   moneyCostModifier: 0
   researchCostModifier: 0

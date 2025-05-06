@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
+  m_Name: Fund Sustainable Farming
+  m_EditorClassIdentifier: 
+  actionName: Fund Sustainable Farming
+  description: Help farmers transition to practices that preserve soil and biodiversity
+  isDirect: 1
+  economyChange: 5
+  taxChange: 0
+  educationChange: 10
+  stabilityChange: 0
+  complianceChange: 5
+  happinessChange: 0
+  healthChange: 5
+  baseResearchCost: 750
+  baseMoneyCost: 750
+  finalResearchCost: 750
+  finalMoneyCost: 750
+  ticksToComplete: 0
+  isUnlocked: 0
