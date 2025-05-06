@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log($"Global health: {globalHealth}");
         money += moneyIncome * moneyGenerationMultiplier;
         research += researchIncome * researchGenerationMultiplier;
-        Debug.Log($"Tick {tickCount} Money: {money} Research: {research}");
+        // Debug.Log($"Tick {tickCount} Money: {money} Research: {research}");
     }
 
     public void CheckWin()

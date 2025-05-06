@@ -33,7 +33,7 @@ public class ActionManager : MonoBehaviour
                 action.isUnlocked = true;
             
         }
-        
+
         if (!action.isDirect)
         {
             region.economyChangeRate += action.economyChange * region.compliance / 100f;
@@ -56,12 +56,13 @@ public class ActionManager : MonoBehaviour
         }
 
         ConsoleManager.Instance.AddEntry($"Breaking News: {action.actionName} enforced in {region.regionName}.");
-        // Debug.Log($"Action executed: {action.actionName} applied to {region.regionName}");
+        Debug.Log($"Action executed: {action.actionName} applied to {region.regionName}");
         // Debug.Log($"Compliance in {region.regionName}: {region.compliance}\nHappiness in {region.regionName}: {region.happiness}");
         // Debug.Log($"Money: {GameManager.Instance.money}, Research: {GameManager.Instance.research}");
-        // Debug.Log($"Economy Change: {action.economyChange}, Tax Change: {action.taxChange}, Education Change: {action.educationChange}, Stability Change: {action.stabilityChange}, Compliance Change: {action.complianceChange}, Happiness Change: {action.happinessChange}, Health Change: {action.healthChange}");
+        Debug.Log($"Economy Change: {action.economyChange}, Tax Change: {action.taxChange}, Education Change: {action.educationChange}, Stability Change: {action.stabilityChange}, Compliance Change: {action.complianceChange}, Happiness Change: {action.happinessChange}, Health Change: {action.healthChange}");
         // Debug.Log($"Health Change: {action.healthChange}");
         // if (isAI) Debug.Log($"AI Action executed: {action.actionName} applied to {region.regionName}");
+        Debug.Log($"{region.regionName} Economy: {region.economy}, Tax: {region.tax}, Education: {region.education}, Stability: {region.stability}, Compliance: {region.compliance}, Happiness: {region.happiness}, Health: {region.health}");
 
         if (!isAI) RegionInfoPanel.Instance.Refresh(region);
         GameInfoPanel.Instance.Refresh(GameManager.Instance);

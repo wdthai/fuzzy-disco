@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1b94d3d18797459cee638d6bbbc52, type: 3}
   m_Name: Test 5 Action
   m_EditorClassIdentifier: 
-  actionName: Change Health
+  actionName: Test Action 5
   description: 
-  isDirect: 0
-  economyChange: 0
-  taxChange: 0
-  educationChange: 0
-  stabilityChange: 0
+  isDirect: 1
+  economyChange: 100
+  taxChange: -100
+  educationChange: 100
+  stabilityChange: -100
   complianceChange: 100
   happinessChange: -100
-  healthChange: 0
+  healthChange: 100
   baseResearchCost: 5
   baseMoneyCost: 5
   finalResearchCost: 0
