@@ -15,13 +15,13 @@ MonoBehaviour:
   actionName: Reforestation Program
   description: Mobilize workers to plant trees and restore forests
   isDirect: 0
-  economyChange: -10
+  economyChange: 10
   taxChange: 0
   educationChange: 0
-  stabilityChange: 5
+  stabilityChange: 0
   complianceChange: 0
   happinessChange: 0
-  healthChange: 10
+  healthChange: 20
   baseResearchCost: 500
   baseMoneyCost: 800
   finalResearchCost: 200

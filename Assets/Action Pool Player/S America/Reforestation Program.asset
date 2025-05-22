@@ -15,15 +15,15 @@ MonoBehaviour:
   actionName: Reforestation Program
   description: Launch planting operations to repair damaged land
   isDirect: 0
-  economyChange: 0
+  economyChange: 15
   taxChange: 0
   educationChange: 0
-  stabilityChange: 5
+  stabilityChange: 0
   complianceChange: 0
-  happinessChange: 10
-  healthChange: 10
-  baseResearchCost: 500
-  baseMoneyCost: 1000
+  happinessChange: 5
+  healthChange: 40
+  baseResearchCost: 800
+  baseMoneyCost: 500
   finalResearchCost: 500
   finalMoneyCost: 1000
   ticksToComplete: 0

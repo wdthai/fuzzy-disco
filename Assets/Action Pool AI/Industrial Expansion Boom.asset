@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Industrial Expansion Boom
   description: Massive industrial growth proceeds unchecked and strains natural conditions
-  isRateChange: 1
+  isDirect: 0
   economyChange: 15
   taxChange: 0
   educationChange: 0
   stabilityChange: -5
   complianceChange: 0
-  happinessChange: 0
-  healthChange: -10
+  happinessChange: 10
+  healthChange: -20
   baseResearchCost: 0
   baseMoneyCost: 0
   finalResearchCost: 0

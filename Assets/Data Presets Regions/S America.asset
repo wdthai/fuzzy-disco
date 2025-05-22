@@ -37,15 +37,15 @@ MonoBehaviour:
   tax: 35
   education: 50
   stability: 45
-  compliance: 40
+  compliance: 65
   happiness: 50
-  health: 45
+  health: 35
   economyChangeRate: 2
   taxChangeRate: 1
   educationChangeRate: 1
   stabilityChangeRate: -3
   complianceChangeRate: -2
-  happinessChangeRate: -1
-  healthChangeRate: -3
+  happinessChangeRate: 1
+  healthChangeRate: -2
   isCritical: 0
   isDead: 0

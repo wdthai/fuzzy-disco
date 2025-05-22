@@ -9,7 +9,9 @@ public class ConsoleManager : MonoBehaviour
     public GameObject fullPanel; 
     public Queue<string> logQueue = new Queue<string>();
     public int maxEntries = 50;
+    public TextMeshProUGUI dayText;
     public TextMeshProUGUI latestText;
+
 
     void Awake()
     {

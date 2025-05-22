@@ -55,8 +55,9 @@ public class ActionManager : MonoBehaviour
             region.health += action.healthChange * region.compliance / 100f;
         }
 
-        ConsoleManager.Instance.AddEntry($"Breaking News: {action.actionName} enforced in {region.regionName}.");
-        Debug.Log($"Action executed: {action.actionName} applied to {region.regionName}");
+        
+        if (isAI) ConsoleManager.Instance.AddEntry($"Breaking News: {action.actionName} underway in {region.regionName}.\n{action.description}");
+        else ConsoleManager.Instance.AddEntry($"Breaking News: {action.actionName} enforced in {region.regionName}.");
         // Debug.Log($"Compliance in {region.regionName}: {region.compliance}\nHappiness in {region.regionName}: {region.happiness}");
         // Debug.Log($"Money: {GameManager.Instance.money}, Research: {GameManager.Instance.research}");
         Debug.Log($"Economy Change: {action.economyChange}, Tax Change: {action.taxChange}, Education Change: {action.educationChange}, Stability Change: {action.stabilityChange}, Compliance Change: {action.complianceChange}, Happiness Change: {action.happinessChange}, Health Change: {action.healthChange}");

@@ -40,12 +40,12 @@ MonoBehaviour:
   compliance: 40
   happiness: 45
   health: 40
-  economyChangeRate: 2
+  economyChangeRate: -5
   taxChangeRate: 1
   educationChangeRate: 1
   stabilityChangeRate: -2
-  complianceChangeRate: 1
-  happinessChangeRate: -1
-  healthChangeRate: -3
+  complianceChangeRate: 4
+  happinessChangeRate: -4
+  healthChangeRate: -1
   isCritical: 0
   isDead: 0

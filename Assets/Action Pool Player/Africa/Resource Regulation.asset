@@ -21,8 +21,8 @@ MonoBehaviour:
   stabilityChange: 0
   complianceChange: -10
   happinessChange: 0
-  healthChange: 20
-  baseResearchCost: 400
+  healthChange: 10
+  baseResearchCost: 200
   baseMoneyCost: 500
   finalResearchCost: 400
   finalMoneyCost: 500

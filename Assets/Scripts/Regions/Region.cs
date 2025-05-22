@@ -52,6 +52,8 @@ public class Region : MonoBehaviour
         if (data.health <= 0){
             killRegion();
             return;
+        } else {
+            data.isDead = false;
         }
 
         if (data.health <= 20){

@@ -20,8 +20,8 @@ MonoBehaviour:
   moneyCostModifier: -0.05
   researchCostModifier: 0
   policyCostModifier: 0
-  baseResearchCost: 200
-  baseMoneyCost: 2500
+  baseResearchCost: 1250
+  baseMoneyCost: 900
   finalResearchCost: 180
   finalMoneyCost: 2250
   ticksToComplete: 0

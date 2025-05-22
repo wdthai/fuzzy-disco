@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         
         while (Instance != null)
         {
-            ConsoleManager.Instance.AddEntry($"Day {tickCount}");
+            ConsoleManager.Instance.dayText.text = $"Day {tickCount}";
             foreach (Region region in Regions)
                 region.Refresh();
 

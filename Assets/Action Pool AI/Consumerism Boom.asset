@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Consumerism Boom
   description: 
-  isRateChange: 0
-  economyChange: 10
+  isDirect: 0
+  economyChange: 15
   taxChange: 0
   educationChange: 0
-  stabilityChange: -5
+  stabilityChange: 0
   complianceChange: 0
-  happinessChange: 10
-  healthChange: -15
+  happinessChange: 5
+  healthChange: -10
   baseResearchCost: 0
   baseMoneyCost: 0
   finalResearchCost: 0

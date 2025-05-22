@@ -22,8 +22,8 @@ MonoBehaviour:
   complianceChange: 5
   happinessChange: 0
   healthChange: 15
-  baseResearchCost: 750
-  baseMoneyCost: 1000
+  baseResearchCost: 1000
+  baseMoneyCost: 800
   finalResearchCost: 750
   finalMoneyCost: 1000
   ticksToComplete: 0

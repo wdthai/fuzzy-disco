@@ -45,7 +45,7 @@ MonoBehaviour:
   educationChangeRate: 1
   stabilityChangeRate: -2
   complianceChangeRate: -3
-  happinessChangeRate: -2
-  healthChangeRate: -3
+  happinessChangeRate: 2
+  healthChangeRate: -2
   isCritical: 0
   isDead: 0

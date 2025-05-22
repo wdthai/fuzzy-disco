@@ -43,7 +43,7 @@ public class ActionPanel : MonoBehaviour
             if (action.happinessChange != 0) statChanges += $"Happiness: {action.happinessChange.ToString("+#;-#;0")}\n";
             if (action.healthChange != 0) statChanges += $"Health: {action.healthChange.ToString("+#;-#;0")}\n";
 
-            textFields[0].text = $"{action.actionName}\n{action.description}";
+            textFields[0].text = $"{action.actionName}\n\n{action.description}";
             textFields[1].text = $"{statChanges}";
 
             if (action.isUnlocked) 

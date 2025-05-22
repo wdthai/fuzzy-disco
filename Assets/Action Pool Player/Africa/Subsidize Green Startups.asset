@@ -23,7 +23,7 @@ MonoBehaviour:
   happinessChange: 5
   healthChange: 0
   baseResearchCost: 150
-  baseMoneyCost: 750
+  baseMoneyCost: 400
   finalResearchCost: 150
   finalMoneyCost: 750
   ticksToComplete: 0
